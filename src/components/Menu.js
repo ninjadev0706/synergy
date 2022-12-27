@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../pages/connector";
 import { toast } from "react-toastify";
+import { useMediaQuery } from "react-responsive";
+import WalletBtn from "./WalletBtn";
 let isConfirm = false;
 
 const Menu = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
+
   const { account, activate, deactivate, error, active, chainId } =
     useWeb3React();
 
@@ -102,45 +108,23 @@ const Menu = () => {
                         Team
                       </a>
                     </li>
+                    {!isDesktopOrLaptop && (
+                      <WalletBtn
+                        account={account}
+                        handleLogin={handleLogin}
+                        handleLogout={handleLogout}
+                        copyToClipBoard={copyToClipBoard}
+                      />
+                    )}
                   </ul>
                 </div>
-                {!account ? (
-                  <div className="link" onClick={handleLogin}>
-                    <a href="#" className="wallet-btn">
-                      <span className="txt">Connect Wallet</span>
-                    </a>
-                  </div>
-                ) : (
-                  <div
-                    className="link"
-                    onClick={() => {
-                      navigator.clipboard.writeText(account);
-                      copyToClipBoard();
-                    }}
-                  >
-                    <a href="#" className="wallet-btn">
-                      <div className="right-header-wallet-flex">
-                        <div
-                          className="cursorPointer"
-                          onClick={() => {
-                            navigator.clipboard.writeText(account);
-                            copyToClipBoard();
-                          }}
-                        >
-                          <p>
-                            {account.slice(0, 6) + "..." + account.slice(-4)}
-                          </p>
-                        </div>&nbsp;
-                        <img
-                          alt="logo"
-                          className="wallet-img"
-                          onClick={handleLogout}
-                          src="wallet-icon.png"
-                        />
-                        <span id="snackbar">Copied</span>
-                      </div>
-                    </a>
-                  </div>
+                {isDesktopOrLaptop && (
+                  <WalletBtn
+                    account={account}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                    copyToClipBoard={copyToClipBoard}
+                  />
                 )}
               </nav>
             </div>
