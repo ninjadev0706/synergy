@@ -286,7 +286,7 @@ function App() {
             /> */}
         </Routes>
         {/* </DAppProvider> */}
-        {/* <ToastContainer /> */}
+        <ToastContainer />
       </BrowserRouter>
     </>
   );
