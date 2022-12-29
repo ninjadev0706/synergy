@@ -161,7 +161,7 @@ a:hover {
   position: relative;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 70px 0;
+  padding: 110px 0;
 }
 
 /* .main-banner .lower-content:before {
@@ -181,7 +181,7 @@ a:hover {
 
 .main-banner .counter-col {
   position: relative;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .swap-icon {
@@ -239,7 +239,7 @@ a:hover {
 
 .main-banner .progress-col {
   position: relative;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .main-banner .progress-col .inner {
@@ -374,7 +374,6 @@ a:hover {
   padding: 5px 20px;
   line-height: 30px;
   font-size: 16px;
-  font-weight: 600;
   border-radius: 28px;
   position: relative;
   display: inline-block;
@@ -1283,6 +1282,10 @@ footer .footer-form .submitwrap textarea {
 }
 
 @media (max-width: 600px) {
+  .main-banner .lower-content {
+    padding: 0;
+  }
+
   .banner-head h1 {
     font-size: 26px;
   }
@@ -1300,7 +1303,7 @@ footer .footer-form .submitwrap textarea {
   }
 
   .banner-inner {
-    padding: 70px 0 70px;
+    padding: 30px 0;
   }
 
   .main-banner .time-countdown .counter-column {
