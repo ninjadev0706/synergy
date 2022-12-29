@@ -265,7 +265,14 @@ function App() {
         {/* <Hero promiseData={promiseData} /> */}
         {/* <DAppProvider config={{}}> */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home
+            account={account}
+            promiseData={promiseData}
+            presaleStart={presaleStart}
+            isEnded={isEnded}
+            buy_CCOIN={buy_CCOIN}
+          />} />
+
           {/* <Route path="/swap" element={<Swap 
               account={account}
               promiseData={promiseData}

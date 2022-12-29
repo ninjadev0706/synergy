@@ -9,12 +9,18 @@ import Roadmap from "../components/Roadmap";
 import Team from "../components/Team";
 import TokenDetail from "../components/TokenDetail";
 
-const Home = () => {
+const Home = ({ account, promiseData, presaleStart, isEnded, buy_CCOIN }) => {
 
   return (
     <div className="">
       <Menu />
-      <PurchaseToken />
+      <PurchaseToken
+        account={account}
+        promiseData={promiseData}
+        presaleStart={presaleStart}
+        isEnded={isEnded}
+        buy_CCOIN={buy_CCOIN}
+      />
       <AboutToken />
       <Benefit />
       <TokenDetail />

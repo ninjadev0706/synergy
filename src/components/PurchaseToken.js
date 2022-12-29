@@ -1,6 +1,7 @@
 import Countdown from "react-countdown";
+import BuyToken from "./BuyToken";
 
-const PurchaseToken = () => {
+const PurchaseToken = ({ account, promiseData, presaleStart, isEnded, buy_CCOIN }) => {
   let startTime = 1673708400000;
 
   const displayTime = ({ days, hours, minutes, seconds, completed }) => {
@@ -33,28 +34,29 @@ const PurchaseToken = () => {
   return (
     <section className="main-banner" id="home">
       <div className="banner-inner">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="ban-contain">
-                <div className="banner-head">
-                  <h1 data-aos="zoom-in" data-aos-duration="2000">
-                    Integrating E-Commerce <br /> with Blockchain
-                  </h1>
-                  <p>
-                    The platform helps investors ensure a safe entry to our coin
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="purchase-token">
+
           <div className="row">
             <div className="col-lg-12">
               <div className="lower-content">
                 <div className="row clearfix">
                   <div className="counter-col col-lg-6 col-md-12 col-sm-12">
                     <div className="inner">
-                      <h5>Pre-sale will be live on</h5>
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="ban-contain">
+                            <div className="banner-head">
+                              <h1 data-aos="zoom-in" data-aos-duration="2000">
+                                Integrating E-Commerce with Blockchain
+                              </h1>
+                              <p>
+                                The platform helps investors ensure a safe entry to our coin
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className=""><h5>Pre-sale will be live on</h5></div>
                       <div className="time-counter">
                         <Countdown date={startTime} renderer={displayTime} />
                       </div>
@@ -62,7 +64,14 @@ const PurchaseToken = () => {
                   </div>
 
                   <div className="progress-col col-lg-6 col-md-12 col-sm-12">
-                    <div className="inner">
+                    <BuyToken
+                      account={account}
+                      promiseData={promiseData}
+                      presaleStart={presaleStart}
+                      isEnded={isEnded}
+                      buy_CCOIN={buy_CCOIN}
+                    />
+                    {/* <div className="inner">
                       <h5>Pre Sale</h5>
                       <div className="progress-box">
                         <div className="bar-outer">
@@ -86,11 +95,11 @@ const PurchaseToken = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
-              <div
+              {/* <div
                 className="home-down"
                 data-aos="fade-up"
                 data-aos-duration="2000"
@@ -100,7 +109,7 @@ const PurchaseToken = () => {
                     <span className="txt">Purchase tokens</span>
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

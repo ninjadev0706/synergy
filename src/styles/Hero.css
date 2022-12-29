@@ -1,5 +1,4 @@
-:root {
-}
+:root {}
 
 #hero-background {
   width: 100%;
@@ -85,13 +84,17 @@ a.font-dark {
 }
 
 .avax-img {
-  width: 36px;
-  height: 36px;
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
 }
+
 .ccoin-img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
 }
+
 .logo-nulshock {
   font-weight: 400;
   font-size: 32px;
@@ -128,12 +131,15 @@ a.font-dark {
   line-height: 22px;
   width: 180px;
 }
+
 .connect-wallet:hover {
   /* background-image: url("/public/btnbg-hover.png"); */
 }
+
 .connect-wallet:active {
   /* background-image: url("/public/btnbg-press.png"); */
 }
+
 .wallet-img {
   width: 15px;
 }
@@ -143,12 +149,14 @@ a.font-dark {
 .leftside-description {
   line-height: 25px;
 }
+
 .ccoin-title {
   font-family: "Leander";
   font-weight: 400;
   font-size: 14px;
   text-align: left;
 }
+
 .ccoin-value {
   font-family: "Leander";
   font-size: 18px;
@@ -213,13 +221,16 @@ a.font-dark {
   justify-content: center;
   width: 70%;
 }
+
 .main-content {
   height: calc(100vh - 100px);
 }
+
 .card-content {
   padding-top: 100px;
   padding-bottom: 50px;
 }
+
 .leftsidebar {
   display: inline-block;
   background-color: rgba(37, 20, 3, 0.8);
@@ -231,6 +242,7 @@ a.font-dark {
   width: 25%;
   min-width: 330px;
 }
+
 .right-area {
   margin-left: 2.5%;
   position: relative;
@@ -242,16 +254,19 @@ a.font-dark {
 .vesting-area {
   padding: 40px;
 }
+
 .dropfilter {
   filter: blur(3px);
 }
+
 .warning-msg {
   position: absolute;
-  font-size: 40px;
+  font-size: 25px;
   color: white;
 }
+
 .rightsidebar {
-  background-color: rgba(37, 20, 3, 0.8);
+  background-color: #262626;
   backdrop-filter: blur(5px);
   border-radius: 20px;
   color: white;
@@ -262,22 +277,25 @@ a.font-dark {
   height: 100%;
   min-width: 450px;
 }
+
 .rightsidebar-content {
   width: 100%;
 }
+
 .right-contentarea {
   padding: 40px;
 }
+
 .private-button {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  background: rgba(186, 189, 8, 0.2);
-  color: #ff9d00;
-  border: 2px solid #ff9d00;
+  top: 40px;
+  right: 40px;
+  background: rgb(38 38 38);
+  color: #1da1f3;
+  border: 2px solid #1da1f3;
   border-radius: 12px;
-  padding: 0 20px;
-  height: 33px;
+  padding: 0 15px;
+  height: 26px;
 }
 
 .live-button {
@@ -384,21 +402,22 @@ a.font-dark {
 }
 
 .progress {
-  background-color: #724c24;
+  background-color: #1da1f3;
   border-radius: 50px;
-  font-size: 17px;
+  font-size: 13px;
   color: #ffffff;
-  /* height: 20px; */
+  height: 20px;
+  padding-left: 10px;
 }
 
 .progress1 .progress-bar {
-  background-color: #f9d54c;
+  background-color: #1da1f3;
   border-radius: 50px;
   /* height: 100%; */
 }
 
 .progress2 .progress-bar {
-  background-color: #f9d54c;
+  background-color: #1da1f3;
   border-radius: 50px;
   /* height: 100%; */
 }
@@ -433,13 +452,13 @@ a.font-dark {
 }
 
 .max-button {
-  background: #5e3f1f;
-  border: 0.5px solid #f9d54c;
+  background: #262626;
+  border: 0.5px solid #1da1f3;
   border-radius: 8px;
-  color: #f9d54c;
+  color: #1da1f3;
   font-weight: 500;
-  font-size: 15px;
-  padding: 5px;
+  font-size: 10px;
+  padding: 3px 5px;
   cursor: pointer;
 }
 
@@ -471,14 +490,13 @@ a.font-dark {
 }
 
 .amount-button {
-  background: #514334;
+  background: #1da1f3;
   border-radius: 20px;
   border: none;
   color: #ffffff;
-  font-family: "Crimson Text";
   font-weight: 500;
   line-height: 35px;
-  padding: 16px 0;
+  padding: 10px 0;
   width: 100%;
 }
 
@@ -494,15 +512,17 @@ a.font-dark {
   padding: 16px 0;
   width: 100%;
 }
+
 .big-order-button:hover {
   background-color: #face26;
 }
+
 .big-order-button:active {
   background-color: #face26;
 }
 
 .insufficient-button {
-  background: #514334;
+  background: #1da1f3;
   border-radius: 12px;
   font-family: "Crimson Text";
   font-size: 24px;
@@ -700,6 +720,7 @@ a.font-dark {
     gap: 10px;
     padding: 20px 0;
   }
+
   .navbar-links.responsive a {
     padding: auto;
   }
@@ -780,20 +801,27 @@ a.font-dark {
     margin: 50px 0;
     padding: 0;
   }
+
   .left-area {
     padding: 40px;
   }
+
   .right-area {
     margin-left: 0;
-    width: 80%;
+    /* width: 80%; */
+    max-width: 450px;
+    margin: auto;
   }
+
   .rightsidebar {
-    padding: 60px 20px;
+    padding: 20px 5px;
     margin: 50px 0 100px 0;
   }
+
   .rightside-effect {
     width: 100%;
   }
+
   .right-contentarea {
     padding: 20px;
   }
@@ -883,7 +911,7 @@ a.font-dark {
   .amount-button,
   .big-order-button,
   .insufficient-button {
-    font-size: 25px;
+    /* font-size: 25px; */
   }
 
   .min-price-button,
