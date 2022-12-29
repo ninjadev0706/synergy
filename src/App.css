@@ -128,7 +128,7 @@ a:hover {
 }
 
 .purchase-token {
-  max-width: 1300px;
+  max-width: 1100px;
   margin: auto;
   width: calc(100% - 30px);
 }
@@ -1259,6 +1259,13 @@ footer .footer-form .submitwrap textarea {
 
 .copy-text {
   color: #fff;
+}
+
+.tokenlist {
+  background-color: #2f333f;
+  right: 18px;
+  padding: 5px 0;
+  border-radius: 10px;
 }
 
 @media (min-width: 1024px) {

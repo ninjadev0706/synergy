@@ -48,6 +48,12 @@ const Menu = () => {
     }, 3000);
   }
 
+  useEffect(() => {
+    if(localStorage.getItem("accountStatus")) {
+      activate(injected);
+    }
+  }, [])
+
   return (
     <section className="main-header">
       <header className="home-header">

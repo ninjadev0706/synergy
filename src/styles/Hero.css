@@ -467,11 +467,24 @@ a.font-dark {
   opacity: 0.8;
 }
 
+.selectedtoken {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 10px 5px 0;
+  width: 95px;
+}
+
 .avax-section,
 .ccoin-section {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 5px 10px 5px 0;
+}
+
+.avax-section:hover {
+  background-color: #222328;
 }
 
 .ccoin-price-section,
