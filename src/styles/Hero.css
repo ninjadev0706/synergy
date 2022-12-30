@@ -248,7 +248,7 @@ a.font-dark {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 }
 
 .vesting-area {
@@ -858,6 +858,10 @@ a.font-dark {
 }
 
 @media screen and (max-width: 720px) {
+  .selectedtoken {
+    width: 105px;
+  }
+
   .rightsidebar {
     min-width: 300px;
   }

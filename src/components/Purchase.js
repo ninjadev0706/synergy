@@ -57,12 +57,6 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
   //       document.removeEventListener("touchstart", listener);
   //     };
   //   },
-  //   // Add ref and handler to effect dependencies
-  //   // It's worth noting that because the passed-in handler is a new ...
-  //   // ... function on every render that will cause this effect ...
-  //   // ... callback/cleanup to run every render. It's not a big deal ...
-  //   // ... but to optimize you can wrap handler in useCallback before ...
-  //   // ... passing it into this hook.
   //   [ref]
   // );
 
@@ -107,7 +101,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
                   minimumFractionDigits: 0,
                   maximumFractionDigits: 4,
                 })}{" "}
-              SURF
+              SYRF
             </p>
           </div>
           <div className="mt-10">
@@ -230,8 +224,8 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
               }}
             />
             <div className="ccoin-section font-non-nulshock t-grey3 fs-25">
-              <img alt="coin" className="ccoin-img" src="c-coin-small.png" />
-              <p className="ccoin-letter ml-20">SURF</p>
+              <img alt="coin" className="ccoin-img" src="./tokens/SYRF.png" />
+              <p className="ccoin-letter ml-20">SYRF</p>
             </div>
           </div>
         </div>
@@ -239,7 +233,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
           <p>Price</p>
           <div className="ccoin-price-title">
             {rate === 0 ? (
-              <p>{promiseData["token_price"]} SURF per AVAX</p>
+              <p>{promiseData["token_price"]} SYRF per AVAX</p>
             ) : (
               <p>
                 {Number(1 / promiseData["token_price"]).toLocaleString(
@@ -249,7 +243,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
                     maximumFractionDigits: 4,
                   }
                 )}{" "}
-                AVAX per SURF
+                AVAX per SYRF
               </p>
             )}
             <img
