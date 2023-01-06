@@ -5,10 +5,9 @@ import CountDownDate from "./CountDownDate";
 const RightSideBar = ({
   account,
   promiseData,
-  presaleStart,
-  isEnded,
   approve_AVAX,
-  buy_CCOIN,
+  buyWithBNB,
+  getTokenBalance
 }) => {
   const [currentTime, setCurrentTime] = useState(new Date().getTime());
 
@@ -33,55 +32,27 @@ const RightSideBar = ({
 
   return (
     <div className="right-area">
-      <div className={account? "rightsidebar rightside-effect": "rightsidebar dropfilter"}>
-        {!presaleStart || isEnded ? (
+      <div className={account ? "rightsidebar rightside-effect" : "rightsidebar dropfilter"}>
+        {promiseData.icoState !== 1 ? (
           <button className="private-button  fs-14">PRIVATE</button>
         ) : (
           <button className="live-button  fs-14">LIVE</button>
         )}
 
         <div className="flex-column alignCenter rightsidebar-content">
-          {/* <Purchase promiseData={promiseData} leftDays={leftDays} buy_CCOIN={buy_CCOIN} isEnded={isEnded} /> */}
-          {(presaleStart && !isEnded) ? (
+          {/* <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} isEnded={isEnded} /> */}
+          {promiseData.icoState !== 1 ? (
             <Purchase
               promiseData={promiseData}
               leftDays={leftDays}
               approve_AVAX={approve_AVAX}
-              buy_CCOIN={buy_CCOIN}
+              buyWithBNB={buyWithBNB}
             />
           ) : (
             <>
-              {(!presaleStart && !isEnded) ? (
-                <>
-                  <div className=" fs-20">
-                    <span className=" t-white">
-                      <span className="">
-                        Presale {" "}
-                        {!presaleStart ? (
-                          <span className="">starts</span>
-                        ) : (
-                          <span className="">ends</span>
-                        )}{" "}
-                        at
-                      </span>{" "}
-                      {!presaleStart ? (
-                        <span className=" t-white">{promiseData["start_day"]}</span>
-                      ) : (
-                        <span className=" t-white">
-                          {promiseData["end_day"]}
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                  <CountDownDate
-                    seconds={ (Date.parse(promiseData["start_day"]) - (currentTime)) / 1000 }
-                  />
-                </>
-              ) : (
-                <div>        
-                  <Purchase promiseData={promiseData} leftDays={leftDays} buy_CCOIN={buy_CCOIN} isEnded={isEnded} />
-                </div>
-              )}
+              <div>
+                <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} getTokenBalance={getTokenBalance} />
+              </div>
             </>
           )}
         </div>

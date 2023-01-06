@@ -90,8 +90,8 @@ a.font-dark {
 }
 
 .ccoin-img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin: 0 10px;
 }
 
@@ -103,7 +103,7 @@ a.font-dark {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #f5c07c;
+  color: #c1f57c;
 }
 
 .font-non-nulshock {
@@ -293,8 +293,8 @@ a.font-dark {
   top: 40px;
   right: 40px;
   background: rgb(38 38 38);
-  color: #1da1f3;
-  border: 2px solid #1da1f3;
+  color: #bd2130;
+  border: 2px solid #bd2130;
   border-radius: 12px;
   padding: 0 15px;
   height: 26px;
@@ -302,11 +302,11 @@ a.font-dark {
 
 .live-button {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  background: rgba(127, 223, 2, 0.2);
-  color: #00ff2a;
-  border: 2px solid #00ff11;
+  top: 40px;
+  right: 40px;
+  background: rgb(38 38 38);
+  color: #1da1f3;
+  border: 2px solid #1da1f3;
   border-radius: 12px;
   padding: 0 20px;
   height: 33px;
@@ -404,12 +404,11 @@ a.font-dark {
 }
 
 .progress {
-  background-color: #1da1f3;
+  background-color: #1da1f399;
   border-radius: 50px;
   font-size: 13px;
   color: #ffffff;
   height: 20px;
-  padding-left: 10px;
 }
 
 .progress1 .progress-bar {
@@ -482,7 +481,7 @@ a.font-dark {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 5px 10px 5px 0;
+  padding: 5px 12px 5px 0;
 }
 
 .avax-section:hover {
@@ -516,46 +515,43 @@ a.font-dark {
 }
 
 .big-order-button {
-  background: #f9d54c;
+  background: #1da1f3;
   border-radius: 20px;
   border: none;
-  cursor: pointer;
-  color: white;
+  color: #ffffff;
   font-weight: 500;
-  font-family: "Crimson Text";
   line-height: 35px;
-  padding: 16px 0;
+  padding: 10px 0;
   width: 100%;
 }
 
-.big-order-button:hover {
+/* .big-order-button:hover {
   background-color: #face26;
 }
 
 .big-order-button:active {
   background-color: #face26;
-}
+} */
 
 .insufficient-button {
   background: #1da1f3;
-  border-radius: 12px;
-  font-family: "Crimson Text";
-  font-size: 24px;
-  color: white;
-  font-weight: 600;
+  border-radius: 20px;
+  border: none;
+  color: #ffffff;
+  font-weight: 500;
   line-height: 35px;
-  padding: 16px 0;
+  padding: 10px 0;
   width: 100%;
 }
 
 .min-price-button {
-  background: rgba(14, 73, 173, 0.2);
-  border: 4px solid #3674dd;
+  background: #1da1f3;
   border-radius: 20px;
-  color: #3674dd;
+  border: none;
+  color: #ffffff;
   font-weight: 500;
   line-height: 35px;
-  padding: 16px 0;
+  padding: 10px 0;
   width: 100%;
 }
 

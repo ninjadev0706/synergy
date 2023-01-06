@@ -4,10 +4,10 @@ import "../styles/Home.css";
 
 
 
-const BuyToken = ({ account, promiseData, presaleStart, isEnded, buy_CCOIN }) => {
+const BuyToken = ({ account, promiseData, buyWithBNB, getTokenBalance }) => {
 
     return (
-        <RightSideBar account={account} promiseData={promiseData} presaleStart={presaleStart} isEnded={isEnded} buy_CCOIN={buy_CCOIN} />
+        <RightSideBar account={account} promiseData={promiseData} buyWithBNB={buyWithBNB} getTokenBalance={getTokenBalance} />
     );
 };
 

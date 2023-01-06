@@ -1,19 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Dropdown, ProgressBar } from "react-bootstrap";
 import { useWeb3React } from "@web3-react/core";
 import BigNumber from "bignumber.js";
+import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import TokenList from "./TokenList";
 import { tokenlist } from "../config/tokens";
+import erc20_ABI from "../config/abi/erc20.json";
 
-const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
-  const ref = useRef();
-  const { account } = useWeb3React();
+let syrfAddr = "0x558C304e163671B2e6278de7b0cE384A28441111";
+
+const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded }) => {
+  const { account, library } = useWeb3React();
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
   const [rate, setRate] = useState(0.0);
-  const [selectedToken, setSelectToken] = useState(2);
+  const [selectedToken, setSelectToken] = useState(1);
+  const [selectedTokenPrice, setSelectTokenPrice] = useState(1);
   const [isOpen, setOpen] = useState(false);
+  const [availableTokenBal, setAvailableTokenBal] = useState(0);
+  const [availableSYRF, setAvailableSYRF] = useState(0);
+
+  promiseData["total_token"] = 10000000;
+
+  // console.log(promiseData.icoState)
 
   // const bigAmount = new BigNumber(fromAmount).multipliedBy(10 ** 6).toFixed(4);
 
@@ -29,7 +39,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
   };
 
   const clickBuy = async () => {
-    await buy_CCOIN(Number(fromAmount));
+    await buyWithBNB(Number(fromAmount));
     toast.success("Purchase successful", {
       position: "top-center",
       autoClose: 4000,
@@ -40,6 +50,58 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
     setFromAmount(0);
     setToAmount(0);
   };
+
+  useEffect(() => {
+    (async () => {
+      const selectedTokenAddr = tokenlist.find(item => item.id === selectedToken).address;
+      const { ethereum } = window;
+
+      console.log(selectedTokenAddr)
+      if (ethereum && account) {
+        let signer;
+        let _provider;
+        if (library) {
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          _provider = provider;
+          signer = provider.getSigner();
+        } else {
+          const provider = new ethers.providers.JsonRpcProvider(
+            "https://data-seed-prebsc-1-s3.binance.org:8545/"
+          );
+          _provider = provider;
+          signer = provider.getSigner(selectedTokenAddr);
+        }
+
+        let availableBal;
+        if (selectedToken === 1) {
+          const balance = await _provider.getBalance(account);
+          const balanceInEth = ethers.utils.formatEther(balance);
+          setAvailableTokenBal(balanceInEth);
+        } else {
+          const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
+          availableBal = await TokenContract.balanceOf(account);
+          setAvailableTokenBal(ethers.utils.formatEther(availableBal));
+        }
+        const SYRFContract = new ethers.Contract(syrfAddr, erc20_ABI, signer);
+        const availableToken = await SYRFContract.balanceOf(account);
+        setAvailableSYRF(ethers.utils.formatEther(availableToken));
+      }
+    })();
+  }, [selectedToken])
+
+  useEffect(() => {
+    if(promiseData.bnbprice) {
+      console.log(promiseData)
+    let price;
+    if(selectedToken === 1) {
+      price = promiseData.bnbprice / (10**8);
+    } else {
+      price = 1;
+    }
+    console.log("typeof => ", typeof(price), price)
+    setSelectTokenPrice(price);
+    }
+  }, [selectedToken])
 
   // useEffect(
   //   () => {
@@ -89,18 +151,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
           <div className="progress-title">
             <p>Progress</p>
             <p>
-              {promiseData["total_token"] === undefined &&
-                promiseData["sold_token"] === undefined
-                ? "0/0"
-                : Number(promiseData["sold_token"]).toLocaleString(undefined, {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 4,
-                }) +
-                "/" +
-                Number(promiseData["total_token"]).toLocaleString(undefined, {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 4,
-                })}{" "}
+              / 10,000,000{" "}
               SYRF
             </p>
           </div>
@@ -108,31 +159,31 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
             <ProgressBar
               label={
                 promiseData["total_token"] === undefined &&
-                  promiseData["sold_token"] === undefined
+                  promiseData["soldAmount"] === undefined
                   ? "0%"
                   : `${progress(
-                    Number(promiseData["sold_token"]),
+                    Number(promiseData["soldAmount"]),
                     Number(promiseData["total_token"])
                   )}%`
               }
               now={
-                promiseData["sold_token"] === undefined &&
+                promiseData["soldAmount"] === undefined &&
                   promiseData["total_token"] === undefined
                   ? 0
                   : progress(
-                    Number(promiseData["sold_token"]),
+                    Number(promiseData["soldAmount"]),
                     Number(promiseData["total_token"]) +
-                    Number(promiseData["sold_token"])
+                    Number(promiseData["soldAmount"])
                   ) < 100
                     ? progress(
-                      Number(promiseData["sold_token"]),
+                      Number(promiseData["soldAmount"]),
                       Number(promiseData["total_token"])
                     )
                     : 100
               }
               className={
                 progress(
-                  Number(promiseData["sold_token"]),
+                  Number(promiseData["soldAmount"]),
                   Number(promiseData["total_token"])
                 ) < 100
                   ? "progress1"
@@ -145,7 +196,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
           <div className="from-container">
             <div className="balance-title font-non-nulshock t-grey2 fs-20">
               <p>From</p>
-              <p>Available: {promiseData["avax_val"]}</p>
+              <p>Available: {account ? availableTokenBal : '0'}</p>
             </div>
             <div className="avax-container">
               <input
@@ -153,17 +204,10 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
                 type="number"
                 placeholder="0.0"
                 value={fromAmount}
-                disabled={(account && !isEnded) ? false : true}
+                disabled={(account && promiseData.icoState === 1) ? false : true}
                 readOnly={account ? false : true}
                 onChange={(e) => {
-                  setToAmount(
-                    Number(
-                      e.target.value * promiseData["token_price"]
-                    ).toLocaleString(undefined, {
-                      minimumFractionDigits: 0,
-                      maximumFractionDigits: 4,
-                    })
-                  );
+                  setToAmount(e.target.value * selectedTokenPrice * (10**2) / promiseData.syrfPrice);
                   setFromAmount(e.target.value);
                 }}
               />
@@ -171,13 +215,8 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
                 <button
                   className="max-button"
                   onClick={() => {
-                    setFromAmount(Number(promiseData["avax_val"]));
-                    setToAmount(
-                      Number(
-                        promiseData["token_price"] *
-                        Number(promiseData["avax_val"])
-                      )
-                    );
+                    setFromAmount(availableTokenBal);
+                    setToAmount(availableTokenBal * selectedTokenPrice * (10**2) / promiseData.syrfPrice);
                   }}
                 >
                   MAX
@@ -191,7 +230,7 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
               </div>
             </div>
           </div>
-          {isOpen && <TokenList ref={ref} setOpen={setOpen} setSelectToken={setSelectToken} />}
+          {isOpen && <TokenList setOpen={setOpen} setSelectToken={setSelectToken} />}
         </div>
         <div className="swap-icon">
           <img alt="arrow" src="yellow-arrow.png" />
@@ -199,27 +238,17 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
         <div className="to-container">
           <div className="available-title font-non-nulshock t-grey2 fs-20">
             <p>To</p>
-            <p>Balance: {promiseData["token_price"]}</p>
+            <p>Balance: {availableSYRF}</p>
           </div>
           <div className="ccoin-container">
             <input
               className="input-value-section t-grey2 fs-30"
               type="number"
               placeholder="0.0"
-              value={Number(toAmount).toLocaleString(undefined, {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 4,
-              })}
+              value={toAmount}
               readOnly={(account && !isEnded) ? false : true}
               onChange={(e) => {
-                setFromAmount(
-                  Number(
-                    e.target.value / promiseData["token_price"]
-                  ).toLocaleString(undefined, {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 4,
-                  })
-                );
+                setFromAmount(e.target.value * (promiseData.syrfPrice / (10**2)) / selectedTokenPrice);
                 setToAmount(e.target.value);
               }}
             />
@@ -258,35 +287,48 @@ const Purchase = ({ promiseData, leftDays, buy_CCOIN, isEnded }) => {
           </div>
         </div>
         <div>
-          {fromAmount > promiseData["avax_val"] * 1 ? (
-            <button className="insufficient-button font-non-nulshock fs-30">
-              Insufficient Balance
-            </button>
-          ) : fromAmount <= 0 ? (
-            <button className="amount-button font-non-nulshock fs-30">
-              Enter an Amount
-            </button>
-          ) : fromAmount < 0.001 ? (
-            <button className="min-price-button font-non-nulshock fs-30">
-              Min. Purchase is 0.001 AVAX
-            </button>
-          ) : (
-            (!isEnded ? (
-              <button
-                className="big-order-button13 font-non-nulshock fs-30"
-                onClick={clickBuy}
-              >
-                Complete Order
-              </button>
-            ) : (
-              <button
-                className="amount-button font-non-nulshock fs-30"
-                onClick={clickBuy} disabled
-              >
-                Presale Ended
-              </button>
-            ))
-          )}
+          <>
+            {
+              promiseData.icoState === 0 ?
+                <button
+                  className="amount-button font-non-nulshock fs-30"
+                  disabled
+                >
+                  Presale isn't started yet
+                </button>
+                :
+                <>
+                  {
+                    promiseData.icoState !== 1 ?
+                      <button
+                        className="amount-button font-non-nulshock fs-30"
+                        disabled
+                      >
+                        Presale Ended
+                      </button>
+                      :
+                      <>
+                        {fromAmount > availableTokenBal ? (
+                          <button className="insufficient-button font-non-nulshock fs-30">
+                            Insufficient Balance
+                          </button>
+                        ) : fromAmount <= 0 ? (
+                          <button className="amount-button font-non-nulshock fs-30">
+                            Enter an Amount
+                          </button>
+                        ) :
+                          <button
+                            className="big-order-button font-non-nulshock fs-30"
+                            onClick={() => buyWithBNB(fromAmount)}
+                          >
+                            Complete Order
+                          </button>
+                        }
+                      </>
+                  }
+                </>
+            }
+          </>
         </div>
       </div>
     </>

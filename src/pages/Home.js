@@ -9,7 +9,7 @@ import Roadmap from "../components/Roadmap";
 import Team from "../components/Team";
 import TokenDetail from "../components/TokenDetail";
 
-const Home = ({ account, promiseData, presaleStart, isEnded, buy_CCOIN }) => {
+const Home = ({ account, promiseData, buyWithBNB, getTokenBalance }) => {
 
   return (
     <div className="">
@@ -17,9 +17,8 @@ const Home = ({ account, promiseData, presaleStart, isEnded, buy_CCOIN }) => {
       <PurchaseToken
         account={account}
         promiseData={promiseData}
-        presaleStart={presaleStart}
-        isEnded={isEnded}
-        buy_CCOIN={buy_CCOIN}
+        buyWithBNB={buyWithBNB}
+        getTokenBalance={getTokenBalance}
       />
       <AboutToken />
       <Benefit />
