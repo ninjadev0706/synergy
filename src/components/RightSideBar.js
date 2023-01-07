@@ -9,23 +9,6 @@ const RightSideBar = ({
   buyWithBNB,
   buyWithTokens
 }) => {
-  const [currentTime, setCurrentTime] = useState(new Date().getTime());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date().getTime());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const leftDays = () => {
-    const leftDay =
-      (1688255999000 - (Date.now())) / 86400000;
-
-      return Number(leftDay.toFixed(0)) + 1;
-
-  };
 
   return (
     <div className="right-area">
@@ -38,7 +21,7 @@ const RightSideBar = ({
 
         <div className="flex-column alignCenter rightsidebar-content">
           <div>
-            <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} buyWithTokens={buyWithTokens} />
+            <Purchase promiseData={promiseData} buyWithBNB={buyWithBNB} buyWithTokens={buyWithTokens} />
           </div>
         </div>
       </div>

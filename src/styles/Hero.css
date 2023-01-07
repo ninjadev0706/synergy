@@ -468,6 +468,10 @@ a.font-dark {
   opacity: 0.8;
 }
 
+.max-button:focus {
+  outline: none;
+}
+
 .selectedtoken {
   display: flex;
   justify-content: flex-end;
@@ -512,6 +516,11 @@ a.font-dark {
   line-height: 35px;
   padding: 10px 0;
   width: 100%;
+  cursor: pointer;
+}
+
+.amount-button:focus {
+  outline: none;
 }
 
 .big-order-button {
@@ -523,6 +532,11 @@ a.font-dark {
   line-height: 35px;
   padding: 10px 0;
   width: 100%;
+  cursor: pointer;
+}
+
+.big-order-button:focus {
+  outline: none;
 }
 
 /* .big-order-button:hover {
@@ -542,6 +556,11 @@ a.font-dark {
   line-height: 35px;
   padding: 10px 0;
   width: 100%;
+  cursor: pointer;
+}
+
+.insufficient-button:focus {
+  outline: none;
 }
 
 .min-price-button {
@@ -553,6 +572,11 @@ a.font-dark {
   line-height: 35px;
   padding: 10px 0;
   width: 100%;
+  cursor: pointer;
+}
+
+.min-price-button:focus {
+  outline: none;
 }
 
 .approve-button {

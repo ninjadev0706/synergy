@@ -4,7 +4,9 @@ import { injected } from "../pages/connector";
 import { toast } from "react-toastify";
 import { useMediaQuery } from "react-responsive";
 import WalletBtn from "./WalletBtn";
+
 let isConfirm = false;
+let IsConnected = false;
 
 const Menu = () => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -15,6 +17,7 @@ const Menu = () => {
     useWeb3React();
 
   const handleLogin = async () => {
+    IsConnected = true;
     isConfirm = true;
     localStorage.setItem("accountStatus", "1");
     toast.success("Successfully Connected to Metamask", {
@@ -53,6 +56,47 @@ const Menu = () => {
       activate(injected);
     }
   }, [])
+
+  useEffect(() => {
+    if (IsConnected && error) {
+      if (error && (error.name === "UnsupportedChainIdError" || error.name === "t")) {
+        const { ethereum } = window;
+        (async () => {
+          try {
+            await ethereum.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x61" }],
+            });
+          } catch (switchError) {
+            if (switchError.code === 4902) {
+              try {
+                await ethereum.request({
+                  method: "wallet_addEthereumChain",
+                  params: [
+                    {
+                      chainId: "0x61",
+                      chainName: "Binance Smart Chain",
+                      nativeCurrency: {
+                        name: "BNB",
+                        symbol: "BNB",
+                        decimals: 18,
+                      },
+                      rpcUrls: ["https://data-seed-prebsc-1-s3.binance.org:8545/"],
+                      blockExplorerUrls: ["https://bscscan.com"],
+                    },
+                  ],
+                });
+              } catch (addError) {
+                console.error(addError);
+              }
+            }
+          }
+          activate(injected)
+        })();
+      }
+      IsConnected = false;
+    }
+  }, [account, error]);
 
   return (
     <section className="main-header">

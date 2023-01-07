@@ -7,14 +7,16 @@ import { toast } from "react-toastify";
 import TokenList from "./TokenList";
 import { tokenlist } from "../config/tokens";
 import erc20_ABI from "../config/abi/erc20.json";
+import Calendar from "./Calendar";
 
 let syrfAddr = "0x558C304e163671B2e6278de7b0cE384A28441111";
 
-const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens }) => {
+const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
   const { account, library } = useWeb3React();
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
   const [approveLoading, setApproveLoading] = useState(false);
+  const [isloading, setLoading] = useState(false);
   const [rate, setRate] = useState(0.0);
   const [selectedToken, setSelectToken] = useState(1);
   const [selectedTokenPrice, setSelectTokenPrice] = useState(0);
@@ -37,7 +39,12 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
   };
 
   const clickBuy = async () => {
-    await buyWithBNB(Number(fromAmount));
+    setLoading(true);
+    try {
+      await buyWithBNB(Number(fromAmount));
+    } catch (err) {
+      console.log(err);
+    }
     toast.success("Purchase successful", {
       position: "top-center",
       autoClose: 4000,
@@ -45,13 +52,19 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
       pauseOnHover: true,
       draggable: true,
     });
+    setLoading(false);
     setFromAmount(0);
     setToAmount(0);
   };
 
   const buyWithToken = async () => {
+    setLoading(true);
     const selectedTokenAddr = tokenlist.find(item => item.id === selectedToken).address;
-    await buyWithTokens(ethers.utils.parseUnits(fromAmount, 18), selectedTokenAddr);
+    try {
+      await buyWithTokens(ethers.utils.parseUnits(fromAmount, 18), selectedTokenAddr);
+    } catch (err) {
+      console.log(err);
+    }
     toast.success("Purchase successful", {
       position: "top-center",
       autoClose: 4000,
@@ -59,6 +72,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
       pauseOnHover: true,
       draggable: true,
     });
+    setLoading(false);
     setFromAmount(0);
     setToAmount(0);
 
@@ -148,7 +162,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
       }
       setSelectTokenPrice(price);
     }
-  }, [account, selectedToken])
+  }, [account, selectedToken, fromAmount, toAmount])
 
   return (
     <>
@@ -167,12 +181,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
               </div>
             )
         ) : (
-          <div className="calendar-section">
-            <img alt="calendar" src="calendar.png" />
-            <p className="calendar-title font-non-nulshock fs-20 ml-10">
-              &nbsp;{leftDays()} day(s) left
-            </p>
-          </div>
+          <Calendar />
         )}
 
         <div className="progress-section font-non-nulshock t-white fs-20">
@@ -357,12 +366,23 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
                           <>
                             {
                               selectedToken === 1 ?
-                                <button
-                                  className="big-order-button font-non-nulshock fs-30"
-                                  onClick={clickBuy}
-                                >
-                                  Complete Order
-                                </button>
+                                <>
+                                  {
+                                    !isloading ?
+                                      <button
+                                        className="big-order-button font-non-nulshock fs-30"
+                                        onClick={clickBuy}
+                                      >
+                                        Complete Order
+                                      </button>
+                                      :
+                                      <button
+                                        className="big-order-button font-non-nulshock fs-30"
+                                      >
+                                        Ordering ...
+                                      </button>
+                                  }
+                                </>
                                 :
                                 <>
                                   {
@@ -387,11 +407,11 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
                                       :
                                       <>
                                         {
-                                          promiseData.buyloading ?
+                                          isloading ?
                                             <button
                                               className="big-order-button font-non-nulshock fs-30"
                                             >
-                                              Completing ...
+                                              Ordering ...
                                             </button>
                                             :
                                             <button
