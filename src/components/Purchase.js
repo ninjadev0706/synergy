@@ -10,22 +10,20 @@ import erc20_ABI from "../config/abi/erc20.json";
 
 let syrfAddr = "0x558C304e163671B2e6278de7b0cE384A28441111";
 
-const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded }) => {
+const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens }) => {
   const { account, library } = useWeb3React();
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
+  const [approveLoading, setApproveLoading] = useState(false);
   const [rate, setRate] = useState(0.0);
   const [selectedToken, setSelectToken] = useState(1);
   const [selectedTokenPrice, setSelectTokenPrice] = useState(1);
   const [isOpen, setOpen] = useState(false);
   const [availableTokenBal, setAvailableTokenBal] = useState(0);
   const [availableSYRF, setAvailableSYRF] = useState(0);
+  const [allowance, setAllowance] = useState(0);
 
   promiseData["total_token"] = 10000000;
-
-  // console.log(promiseData.icoState)
-
-  // const bigAmount = new BigNumber(fromAmount).multipliedBy(10 ** 6).toFixed(4);
 
   const progress = (sold, total) => {
     if (sold < total) {
@@ -51,76 +49,113 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded 
     setToAmount(0);
   };
 
-  useEffect(() => {
-    (async () => {
-      const selectedTokenAddr = tokenlist.find(item => item.id === selectedToken).address;
-      const { ethereum } = window;
+  const buyWithToken = async () => {
+    const selectedTokenAddr = tokenlist.find(item => item.id === selectedToken).address;
+    await buyWithTokens(ethers.utils.parseUnits(fromAmount, 18), selectedTokenAddr);
+    toast.success("Purchase successful", {
+      position: "top-center",
+      autoClose: 4000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    setFromAmount(0);
+    setToAmount(0);
 
-      console.log(selectedTokenAddr)
-      if (ethereum && account) {
-        let signer;
-        let _provider;
-        if (library) {
-          const provider = new ethers.providers.Web3Provider(ethereum);
-          _provider = provider;
-          signer = provider.getSigner();
-        } else {
-          const provider = new ethers.providers.JsonRpcProvider(
-            "https://data-seed-prebsc-1-s3.binance.org:8545/"
-          );
-          _provider = provider;
-          signer = provider.getSigner(selectedTokenAddr);
-        }
+    fetchData();
+  };
 
-        let availableBal;
-        if (selectedToken === 1) {
-          const balance = await _provider.getBalance(account);
-          const balanceInEth = ethers.utils.formatEther(balance);
-          setAvailableTokenBal(balanceInEth);
-        } else {
-          const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
-          availableBal = await TokenContract.balanceOf(account);
-          setAvailableTokenBal(ethers.utils.formatEther(availableBal));
-        }
-        const SYRFContract = new ethers.Contract(syrfAddr, erc20_ABI, signer);
-        const availableToken = await SYRFContract.balanceOf(account);
-        setAvailableSYRF(ethers.utils.formatEther(availableToken));
+
+  const ApproveToken = async () => {
+    setApproveLoading(true);
+    const selectedTokenAddr = tokenlist.find(item => item.id === selectedToken).address;
+    const { ethereum } = window;
+
+    if (ethereum && account) {
+      let signer;
+      let _provider;
+      if (library) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        _provider = provider;
+        signer = provider.getSigner();
+      } else {
+        const provider = new ethers.providers.JsonRpcProvider(
+          "https://data-seed-prebsc-1-s3.binance.org:8545/"
+        );
+        _provider = provider;
+        signer = provider.getSigner(selectedTokenAddr);
       }
-    })();
+      const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
+      try {
+        const approve = await TokenContract.approve(promiseData.icoAddr, ethers.utils.parseUnits(fromAmount, 18));
+        await approve.wait();
+      } catch (err) {
+        console.log("err => ", err)
+      }
+      console.log("end")
+      setApproveLoading(false);
+    }
+  }
+
+  const fetchData = async () => {
+    const selectedTokenAddr = tokenlist.find(item => item.id === selectedToken).address;
+    const { ethereum } = window;
+
+    if (ethereum && account) {
+      let signer;
+      let _provider;
+      if (library) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        _provider = provider;
+        signer = provider.getSigner();
+      } else {
+        const provider = new ethers.providers.JsonRpcProvider(
+          "https://data-seed-prebsc-1-s3.binance.org:8545/"
+        );
+        _provider = provider;
+        signer = provider.getSigner(selectedTokenAddr);
+      }
+
+      let availableBal;
+      if (selectedToken === 1) {
+        const balance = await _provider.getBalance(account);
+        const balanceInEth = ethers.utils.formatEther(balance);
+        setAvailableTokenBal(balanceInEth);
+      } else {
+        const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
+        availableBal = await TokenContract.balanceOf(account);
+        const allow_val = await TokenContract.allowance(account, promiseData.icoAddr);
+        setAllowance(Number(allow_val));
+        setAvailableTokenBal(new BigNumber(availableBal._hex).dividedBy(10 ** 18).toNumber());
+      }
+      const SYRFContract = new ethers.Contract(syrfAddr, erc20_ABI, signer);
+      const availableToken = await SYRFContract.balanceOf(account);
+      setAvailableSYRF(new BigNumber(availableToken._hex).dividedBy(10 ** 18).toNumber());
+    }
+  }
+
+  useEffect(() => {
+    setFromAmount(0);
+    setToAmount(0);
+    fetchData();
+  }, [selectedToken, account, approveLoading])
+
+  useEffect(() => {
+    if (promiseData.bnbprice) {
+      console.log(promiseData)
+      let price;
+      if (selectedToken === 1) {
+        price = promiseData.bnbprice / (10 ** 8);
+      } else {
+        price = 1;
+      }
+      setSelectTokenPrice(price);
+    }
   }, [selectedToken])
 
   useEffect(() => {
-    if(promiseData.bnbprice) {
-      console.log(promiseData)
-    let price;
-    if(selectedToken === 1) {
-      price = promiseData.bnbprice / (10**8);
-    } else {
-      price = 1;
-    }
-    console.log("typeof => ", typeof(price), price)
-    setSelectTokenPrice(price);
-    }
-  }, [selectedToken])
-
-  // useEffect(
-  //   () => {
-  //     const listener = (event) => {
-  //       // Do nothing if clicking ref's element or descendent elements
-  //       if (!ref.current || ref.current.contains(event.target)) {
-  //         setOpen(false);
-  //         return;
-  //       }
-  //     };
-  //     document.addEventListener("mousedown", listener);
-  //     document.addEventListener("touchstart", listener);
-  //     return () => {
-  //       document.removeEventListener("mousedown", listener);
-  //       document.removeEventListener("touchstart", listener);
-  //     };
-  //   },
-  //   [ref]
-  // );
+    console.log(fromAmount, availableTokenBal)
+  }, [fromAmount, availableTokenBal])
 
   return (
     <>
@@ -151,7 +186,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded 
           <div className="progress-title">
             <p>Progress</p>
             <p>
-              / 10,000,000{" "}
+              {promiseData && promiseData.soldAmount} / 10000000{" "}
               SYRF
             </p>
           </div>
@@ -207,7 +242,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded 
                 disabled={(account && promiseData.icoState === 1) ? false : true}
                 readOnly={account ? false : true}
                 onChange={(e) => {
-                  setToAmount(e.target.value * selectedTokenPrice * (10**2) / promiseData.syrfPrice);
+                  setToAmount(e.target.value * selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice);
                   setFromAmount(e.target.value);
                 }}
               />
@@ -216,7 +251,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded 
                   className="max-button"
                   onClick={() => {
                     setFromAmount(availableTokenBal);
-                    setToAmount(availableTokenBal * selectedTokenPrice * (10**2) / promiseData.syrfPrice);
+                    setToAmount(availableTokenBal * selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice);
                   }}
                 >
                   MAX
@@ -248,7 +283,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded 
               value={toAmount}
               readOnly={(account && !isEnded) ? false : true}
               onChange={(e) => {
-                setFromAmount(e.target.value * (promiseData.syrfPrice / (10**2)) / selectedTokenPrice);
+                setFromAmount(e.target.value * (promiseData.syrfPrice / (10 ** 2)) / selectedTokenPrice);
                 setToAmount(e.target.value);
               }}
             />
@@ -317,12 +352,59 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, getTokenBalance, isEnded 
                             Enter an Amount
                           </button>
                         ) :
-                          <button
-                            className="big-order-button font-non-nulshock fs-30"
-                            onClick={() => buyWithBNB(fromAmount)}
-                          >
-                            Complete Order
-                          </button>
+                          <>
+                            {
+                              selectedToken === 1 ?
+                                <button
+                                  className="big-order-button font-non-nulshock fs-30"
+                                  onClick={clickBuy}
+                                >
+                                  Complete Order
+                                </button>
+                                :
+                                <>
+                                  {
+                                    !(account && allowance && new BigNumber(allowance).isGreaterThan(0)) ?
+                                      <>
+                                        {
+                                          approveLoading ?
+                                            <button
+                                              className="big-order-button font-non-nulshock fs-30"
+                                            >
+                                              Approving ...
+                                            </button>
+                                            :
+                                            <button
+                                              className="big-order-button font-non-nulshock fs-30"
+                                              onClick={ApproveToken}
+                                            >
+                                              Approve {tokenlist.find(item => item.id === selectedToken).name}
+                                            </button>
+                                        }
+                                      </>
+                                      :
+                                      <>
+                                        {
+                                          promiseData.buyloading ?
+                                            <button
+                                              className="big-order-button font-non-nulshock fs-30"
+                                            >
+                                              Completing ...
+                                            </button>
+                                            :
+                                            <button
+                                              className="big-order-button font-non-nulshock fs-30"
+                                              onClick={buyWithToken}
+                                            >
+                                              Complete Order
+                                            </button>
+                                        }
+                                      </>
+
+                                  }
+                                </>
+                            }
+                          </>
                         }
                       </>
                   }

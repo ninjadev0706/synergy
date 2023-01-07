@@ -1,7 +1,7 @@
 import Countdown from "react-countdown";
 import BuyToken from "./BuyToken";
 
-const PurchaseToken = ({ account, promiseData, buyWithBNB, getTokenBalance }) => {
+const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
   let startTime = 1673708400000;
 
   const displayTime = ({ days, hours, minutes, seconds, completed }) => {
@@ -68,7 +68,7 @@ const PurchaseToken = ({ account, promiseData, buyWithBNB, getTokenBalance }) =>
                       account={account}
                       promiseData={promiseData}
                       buyWithBNB={buyWithBNB}
-                      getTokenBalance={getTokenBalance}
+                      buyWithTokens={buyWithTokens}
                     />
                     {/* <div className="inner">
                       <h5>Pre Sale</h5>

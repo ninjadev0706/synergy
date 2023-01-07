@@ -9,7 +9,7 @@ import Roadmap from "../components/Roadmap";
 import Team from "../components/Team";
 import TokenDetail from "../components/TokenDetail";
 
-const Home = ({ account, promiseData, buyWithBNB, getTokenBalance }) => {
+const Home = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
 
   return (
     <div className="">
@@ -18,7 +18,7 @@ const Home = ({ account, promiseData, buyWithBNB, getTokenBalance }) => {
         account={account}
         promiseData={promiseData}
         buyWithBNB={buyWithBNB}
-        getTokenBalance={getTokenBalance}
+        buyWithTokens={buyWithTokens}
       />
       <AboutToken />
       <Benefit />

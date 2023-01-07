@@ -7,7 +7,7 @@ const RightSideBar = ({
   promiseData,
   approve_AVAX,
   buyWithBNB,
-  getTokenBalance
+  buyWithTokens
 }) => {
   const [currentTime, setCurrentTime] = useState(new Date().getTime());
 
@@ -47,11 +47,12 @@ const RightSideBar = ({
               leftDays={leftDays}
               approve_AVAX={approve_AVAX}
               buyWithBNB={buyWithBNB}
+              buyWithTokens={buyWithTokens}
             />
           ) : (
             <>
               <div>
-                <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} getTokenBalance={getTokenBalance} />
+                <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} buyWithTokens={buyWithTokens} />
               </div>
             </>
           )}
