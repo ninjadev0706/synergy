@@ -17,7 +17,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
   const [approveLoading, setApproveLoading] = useState(false);
   const [rate, setRate] = useState(0.0);
   const [selectedToken, setSelectToken] = useState(1);
-  const [selectedTokenPrice, setSelectTokenPrice] = useState(1);
+  const [selectedTokenPrice, setSelectTokenPrice] = useState(0);
   const [isOpen, setOpen] = useState(false);
   const [availableTokenBal, setAvailableTokenBal] = useState(0);
   const [availableSYRF, setAvailableSYRF] = useState(0);
@@ -142,7 +142,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
 
   useEffect(() => {
     if (promiseData.bnbprice) {
-      console.log(promiseData)
+      console.log("++++", promiseData)
       let price;
       if (selectedToken === 1) {
         price = promiseData.bnbprice / (10 ** 8);
@@ -151,17 +151,13 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
       }
       setSelectTokenPrice(price);
     }
-  }, [selectedToken])
-
-  useEffect(() => {
-    console.log(fromAmount, availableTokenBal)
-  }, [fromAmount, availableTokenBal])
+  }, [account, selectedToken])
 
   return (
     <>
       <div className="right-contentarea">
-        {isEnded ? (
-          (Date.parse(new Date()) < Date.parse(promiseData['start_day'])) ?
+        {promiseData.icoState !== 1 ? (
+          promiseData.icoState === 0 ?
             (
               <div className="calendar-section">
                 <img alt="calendar" src="calendar.png" />
@@ -177,7 +173,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
           <div className="calendar-section">
             <img alt="calendar" src="calendar.png" />
             <p className="calendar-title font-non-nulshock fs-20 ml-10">
-              {leftDays()} day(s) left
+              &nbsp;{leftDays()} day(s) left
             </p>
           </div>
         )}
@@ -231,7 +227,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
           <div className="from-container">
             <div className="balance-title font-non-nulshock t-grey2 fs-20">
               <p>From</p>
-              <p>Available: {account ? availableTokenBal : '0'}</p>
+              <p>Available: {account ? availableTokenBal : 0}</p>
             </div>
             <div className="avax-container">
               <input
@@ -297,17 +293,26 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
           <p>Price</p>
           <div className="ccoin-price-title">
             {rate === 0 ? (
-              <p>{promiseData["token_price"]} SYRF per AVAX</p>
-            ) : (
               <p>
-                {Number(1 / promiseData["token_price"]).toLocaleString(
+                {promiseData.syrfPrice && Number(selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice).toLocaleString(
                   undefined,
                   {
                     minimumFractionDigits: 0,
                     maximumFractionDigits: 4,
                   }
                 )}{" "}
-                AVAX per SYRF
+                SYRF per {tokenlist.find(item => item.id === selectedToken).name}
+              </p>
+            ) : (
+              <p>
+                {selectedTokenPrice && Number(promiseData.syrfPrice / (selectedTokenPrice * (10 ** 2))).toLocaleString(
+                  undefined,
+                  {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 4,
+                  }
+                )}{" "}
+                {tokenlist.find(item => item.id === selectedToken).name} per SYRF
               </p>
             )}
             <img

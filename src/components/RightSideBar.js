@@ -21,13 +21,10 @@ const RightSideBar = ({
 
   const leftDays = () => {
     const leftDay =
-      (Date.parse(promiseData["end_day"]) - (Date.now())) / 86400000;
+      (1688255999000 - (Date.now())) / 86400000;
 
-    if (leftDay > 0 && leftDay < 30) {
       return Number(leftDay.toFixed(0)) + 1;
-    } else {
-      return 1;
-    }
+
   };
 
   return (
@@ -40,22 +37,9 @@ const RightSideBar = ({
         )}
 
         <div className="flex-column alignCenter rightsidebar-content">
-          {/* <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} isEnded={isEnded} /> */}
-          {promiseData.icoState !== 1 ? (
-            <Purchase
-              promiseData={promiseData}
-              leftDays={leftDays}
-              approve_AVAX={approve_AVAX}
-              buyWithBNB={buyWithBNB}
-              buyWithTokens={buyWithTokens}
-            />
-          ) : (
-            <>
-              <div>
-                <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} buyWithTokens={buyWithTokens} />
-              </div>
-            </>
-          )}
+          <div>
+            <Purchase promiseData={promiseData} leftDays={leftDays} buyWithBNB={buyWithBNB} buyWithTokens={buyWithTokens} />
+          </div>
         </div>
       </div>
       {!account ? (
