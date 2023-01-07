@@ -22,7 +22,7 @@ import erc20_ABI from "./config/abi/erc20.json";
 
 LoadingOverlay.propTypes = undefined;
 
-const ICOContract_Addr = "0x70d54117DD67e0BcF4b9d07fc77A33fE7Af2C0Ef";
+const ICOContract_Addr = "0x8C35f0aF29E244449b108AA51295FF98B09B468f";
 
 let ICOContract;
 

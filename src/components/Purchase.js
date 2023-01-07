@@ -23,7 +23,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
   const [availableSYRF, setAvailableSYRF] = useState(0);
   const [allowance, setAllowance] = useState(0);
 
-  promiseData["total_token"] = 10000000;
+  promiseData["total_token"] = 20000000;
 
   const progress = (sold, total) => {
     if (sold < total) {
@@ -135,8 +135,6 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
   }
 
   useEffect(() => {
-    setFromAmount(0);
-    setToAmount(0);
     fetchData();
   }, [selectedToken, account, approveLoading])
 
@@ -182,7 +180,7 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
           <div className="progress-title">
             <p>Progress</p>
             <p>
-              {promiseData && promiseData.soldAmount} / 10000000{" "}
+              {promiseData && promiseData.soldAmount} / 20000000{" "}
               SYRF
             </p>
           </div>
