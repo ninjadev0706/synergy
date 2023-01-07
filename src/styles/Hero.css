@@ -265,6 +265,7 @@ a.font-dark {
   color: white;
   width: 100%;
   text-align: center;
+  padding-left: 13%;
 }
 
 .rightsidebar {
@@ -772,6 +773,15 @@ a.font-dark {
 }
 
 @media screen and (max-width: 1024px) {
+  .warning-msg {
+    position: absolute;
+    font-size: 25px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+  }
+  
   #logo {
     font-size: 18px;
     float: left;
