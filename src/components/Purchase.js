@@ -140,7 +140,6 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
 
   useEffect(() => {
     if (promiseData.bnbprice) {
-      console.log("++++", promiseData)
       let price;
       if (selectedToken === 1) {
         price = promiseData.bnbprice / (10 ** 8);
@@ -150,8 +149,6 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
       setSelectTokenPrice(price);
     }
   }, [account, selectedToken])
-
-  console.log("++", promiseData.icoState)
 
   return (
     <>
