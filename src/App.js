@@ -95,16 +95,14 @@ function App() {
       const bnbPrice = await ICOContract.getLatestPrice();
       const syrfPrice = await ICOContract.tokenPrice();
       const icoState = await ICOContract.ICOState();
-      const remainingAmount = await ICOContract.getICOTokenBalance();
       const soldAmount = await ICOContract.raisedAmount();
 
       readData['icoAddr'] = ICOContract_Addr;
       readData['bnbprice'] = bnbPrice.toNumber();
       readData['syrfPrice'] = syrfPrice.toNumber();
       readData['icoState'] = icoState;
-      readData['soldAmount'] = soldAmount.toNumber();
+      readData['soldAmount'] = new BigNumber(soldAmount._hex).dividedBy(10 ** 18).toNumber();
       readData['buyloading'] = buyLoading;
-      readData['remainingAmount'] = new BigNumber(remainingAmount._hex).dividedBy(10 ** 18).toNumber();
       setPromiseData(readData);
     }
     setLoading(false);

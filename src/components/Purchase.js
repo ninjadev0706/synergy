@@ -151,6 +151,8 @@ const Purchase = ({ promiseData, leftDays, buyWithBNB, isEnded, buyWithTokens })
     }
   }, [account, selectedToken])
 
+  console.log("++", promiseData.icoState)
+
   return (
     <>
       <div className="right-contentarea">
