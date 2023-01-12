@@ -22,7 +22,7 @@ import erc20_ABI from "./config/abi/erc20.json";
 
 LoadingOverlay.propTypes = undefined;
 
-const ICOContract_Addr = "0x8C35f0aF29E244449b108AA51295FF98B09B468f";
+const ICOContract_Addr = "0x3F01F07AEec9067D5c79E87a413d6760a8AD5caC";
 
 let ICOContract;
 
@@ -84,7 +84,7 @@ function App() {
         signer = provider.getSigner();
       } else {
         const provider = new ethers.providers.JsonRpcProvider(
-          "https://data-seed-prebsc-1-s3.binance.org:8545/"
+          "https://bsc-dataseed1.binance.org/"
         );
         signer = provider.getSigner(ICOContract_Addr);
       }

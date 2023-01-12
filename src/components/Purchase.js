@@ -9,7 +9,7 @@ import { tokenlist } from "../config/tokens";
 import erc20_ABI from "../config/abi/erc20.json";
 import Calendar from "./Calendar";
 
-let syrfAddr = "0x558C304e163671B2e6278de7b0cE384A28441111";
+let syrfAddr = "0x5FC263a14ad382Ca04680e5dfd90Ff12cF8A9e27";
 
 const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
   const { account, library } = useWeb3React();
@@ -94,7 +94,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
         signer = provider.getSigner();
       } else {
         const provider = new ethers.providers.JsonRpcProvider(
-          "https://data-seed-prebsc-1-s3.binance.org:8545/"
+          "https://bsc-dataseed1.binance.org/"
         );
         _provider = provider;
         signer = provider.getSigner(selectedTokenAddr);
@@ -124,7 +124,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
         signer = provider.getSigner();
       } else {
         const provider = new ethers.providers.JsonRpcProvider(
-          "https://data-seed-prebsc-1-s3.binance.org:8545/"
+          "https://bsc-dataseed1.binance.org/"
         );
         _provider = provider;
         signer = provider.getSigner(selectedTokenAddr);
@@ -134,17 +134,18 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
       if (selectedToken === 1) {
         const balance = await _provider.getBalance(account);
         const balanceInEth = ethers.utils.formatEther(balance);
-        setAvailableTokenBal(balanceInEth);
+        console.log("balanceInEth => ", Number(balanceInEth).toFixed(4))
+        setAvailableTokenBal((Math.floor(Number(balanceInEth).toFixed(4)*10000)-30)/10000);
       } else {
         const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
         availableBal = await TokenContract.balanceOf(account);
         const allow_val = await TokenContract.allowance(account, promiseData.icoAddr);
         setAllowance(Number(allow_val));
-        setAvailableTokenBal(new BigNumber(availableBal._hex).dividedBy(10 ** 18).toNumber());
+        setAvailableTokenBal((Math.floor(new BigNumber(availableBal._hex).dividedBy(10 ** 18).toNumber().toFixed(2)*100))/100);
       }
       const SYRFContract = new ethers.Contract(syrfAddr, erc20_ABI, signer);
       const availableToken = await SYRFContract.balanceOf(account);
-      setAvailableSYRF(new BigNumber(availableToken._hex).dividedBy(10 ** 18).toNumber());
+      setAvailableSYRF((Math.floor(new BigNumber(availableToken._hex).dividedBy(10 ** 18).toNumber().toFixed(2)*100))/100);
     }
   }
 

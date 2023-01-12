@@ -65,7 +65,7 @@ const Menu = () => {
           try {
             await ethereum.request({
               method: "wallet_switchEthereumChain",
-              params: [{ chainId: "0x61" }],
+              params: [{ chainId: "0x38" }],
             });
           } catch (switchError) {
             if (switchError.code === 4902) {
@@ -74,14 +74,14 @@ const Menu = () => {
                   method: "wallet_addEthereumChain",
                   params: [
                     {
-                      chainId: "0x61",
+                      chainId: "0x38",
                       chainName: "Binance Smart Chain",
                       nativeCurrency: {
                         name: "BNB",
                         symbol: "BNB",
                         decimals: 18,
                       },
-                      rpcUrls: ["https://data-seed-prebsc-1-s3.binance.org:8545/"],
+                      rpcUrls: ["https://bsc-dataseed1.binance.org/"],
                       blockExplorerUrls: ["https://bscscan.com"],
                     },
                   ],
