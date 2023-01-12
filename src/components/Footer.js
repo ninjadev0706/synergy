@@ -8,7 +8,7 @@ const Footer = () => {
               <div className="footer-form">
                 <div className="submitwrap footer-form-head">
                   <h3>Leave Us a Message</h3>
-                  <div className="row clearfix">
+                  <div className="row clearfix submit-container">
                     <div className="form-group col-lg-6 col-md-6 col-sm-12">
                       <div className="field-inner">
                         <input
@@ -62,8 +62,8 @@ const Footer = () => {
                       </div>
                     </div>
                     <div className="form-group col-lg-12 col-md-12 col-sm-12">
-                      <div className="text-center">
-                        <button type="submit" className="main-btn">
+                      <div className="">
+                        <button type="submit" className="main-btn" style={{ borderRadius: "5px", padding: '5px 15px', boxShadow: '0px 10px 18px #1da1f387' }}>
                           Submit Your Message
                         </button>
                       </div>
@@ -140,6 +140,9 @@ const Footer = () => {
                       </span>
                     </li>
                   </ul>
+                </div>
+                <div className="p-20">
+                  <img src="/images/position.png" alt="" />
                 </div>
               </div>
             </div>

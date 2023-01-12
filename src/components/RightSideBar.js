@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Purchase from "./Purchase";
-import CountDownDate from "./CountDownDate";
 
 const RightSideBar = ({
   account,

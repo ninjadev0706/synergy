@@ -1,6 +1,8 @@
 import AboutToken from "../components/AboutToken";
 import AppSec from "../components/AppSec";
+import Whitepaper from "../components/Whitepaper";
 import Benefit from "../components/Benefit";
+import Potential from "../components/Potential";
 import EntrySec from "../components/EntrySec";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
@@ -25,6 +27,8 @@ const Home = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
       <TokenDetail />
       <EntrySec />
       <Roadmap />
+      <Potential />
+      <Whitepaper />
       <AppSec />
       <Team />
       <Footer />

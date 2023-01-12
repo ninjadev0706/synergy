@@ -6,13 +6,9 @@ const Team = () => {
           <div className="col-lg-12">
             <div className="main-head">
               <h2 data-aos="fade-up" data-aos-duration="2000">
-                Team Players
+                Team Management
               </h2>
               <span className="main-bor"></span>
-              <p>
-                Our team players always finds effective ways to improve the
-                product and process
-              </p>
             </div>
           </div>
         </div>
@@ -20,9 +16,7 @@ const Team = () => {
           <div className="team-block col-xl-3 col-lg-4 col-md-6 col-sm-12">
             <div className="inner-box">
               <div className="image-box">
-                <a href="#">
                   <img src="/images/t4.png" alt="" />
-                </a>
               </div>
               <div className="lower-box"></div>
             </div>
@@ -30,9 +24,7 @@ const Team = () => {
           <div className="team-block col-xl-3 col-lg-4 col-md-6 col-sm-12">
             <div className="inner-box">
               <div className="image-box">
-                <a href="#">
-                  <img src="/images/t6.jpeg" alt="" />
-                </a>
+                  <img src="/images/t6.png" alt="" />
               </div>
               <div className="lower-box"></div>
             </div>
@@ -40,9 +32,7 @@ const Team = () => {
           <div className="team-block col-xl-3 col-lg-4 col-md-6 col-sm-12">
             <div className="inner-box">
               <div className="image-box">
-                <a href="#">
                   <img src="/images/t2.png" alt="" />
-                </a>
               </div>
               <div className="lower-box"></div>
             </div>
@@ -50,9 +40,7 @@ const Team = () => {
           <div className="team-block col-xl-3 col-lg-4 col-md-6 col-sm-12">
             <div className="inner-box">
               <div className="image-box">
-                <a href="#">
                   <img src="/images/t3.png" alt="" />
-                </a>
               </div>
               <div className="lower-box"></div>
             </div>

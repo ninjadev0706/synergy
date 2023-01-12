@@ -12,7 +12,7 @@ const AboutToken = () => {
             <div className="about-content">
               <h1>Why Ico</h1>
               <p>
-                In the crypto ecosystem, an ICO refers to an intial coin
+                In the crypto ecosystem, an ICO refers to an Intial coin
                 offering. An ICO simply involves the public sale of a coin to
                 investors who wish to hold the coin with the view of earning
                 returns from it as well as enjoy access to certain services or

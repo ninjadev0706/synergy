@@ -135,7 +135,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
         const balance = await _provider.getBalance(account);
         const balanceInEth = ethers.utils.formatEther(balance);
         console.log("balanceInEth => ", Number(balanceInEth).toFixed(4))
-        setAvailableTokenBal((Math.floor(Number(balanceInEth).toFixed(4)*10000)-30)/10000);
+        setAvailableTokenBal((((Math.floor(Number(balanceInEth).toFixed(4)*10000)-30) > 0) && Math.floor(Number(balanceInEth).toFixed(4)*10000)-30)/10000);
       } else {
         const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
         availableBal = await TokenContract.balanceOf(account);

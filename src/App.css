@@ -455,7 +455,8 @@ a:hover {
 }
 
 .main-head h2 {
-  font-size: 52px;
+  font-size: 35px;
+  font-weight: 600;
   color: #fff;
   padding-bottom: 15px;
   position: relative;
@@ -476,13 +477,25 @@ a:hover {
 .main-head p {
   font-size: 14px;
   line-height: 25px;
-  color: #e0e0e0;
+  color: #fff;
   text-align: center;
   padding: 20px 0;
 }
 
 .p-100 {
   padding: 100px 0;
+}
+
+.p-200 {
+  padding: 200px 0;
+}
+
+.p-20 {
+  padding: 20px 0;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
 }
 
 .benefit .inner-box {
@@ -512,6 +525,155 @@ a:hover {
   color: #e0e0e0;
   font-size: 14px;
   line-height: 1.5em;
+}
+
+.tokenomics {
+  color: white;
+}
+
+.tokenomics table {
+  width: 100%;
+}
+
+.tokenomics table thead th .title {
+  background-color: #1da1f3;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 5px;
+  gap: 10px;
+  font-weight: 100;
+}
+
+.tokenomics table tbody tr .item {
+  text-align: center;
+  border-bottom: 1px solid #545656;
+  padding: 15px;
+  font-weight: 100 !important;
+  font-size: 14px !important;
+}
+
+.roadmap-body {
+  color: white;
+}
+
+.roadmap-body table {
+  width: 100%;
+}
+
+.roadmap-body table thead th .title {
+  background-color: #1da1f3;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 5px;
+  gap: 10px;
+  font-weight: 100;
+}
+
+.roadmap-body table tbody tr {
+  height: 1px;
+}
+
+.roadmap-body table tbody tr td {
+  height: inherit;
+}
+
+.roadmap-body table tbody tr .item {
+  border-bottom: 1px solid #545656;
+  padding: 15px 3px;
+  font-weight: 100 !important;
+  font-size: 14px !important;
+  height: 100%;
+}
+
+.whitepaper-title {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.whitepaper-bor {
+  display: inline-block;
+  width: 30px;
+  height: 3px;
+  background-color: #1da1f3;
+  text-align: center;
+  border-radius: 5px;
+  margin: 13px 0;
+}
+
+.whitepaper {
+  background-image: url("../public/images/whitepaper.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  padding: 30px;
+  color: white;
+}
+
+.whitepaper .item {
+  margin: 20px 40px 20px 0 ;
+}
+
+.download-btn {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border: 1px solid white;
+}
+
+.download-btn:hover {
+  background-color: #1da1f3;
+  border: 1px solid #1da1f3;
+}
+
+.item-grp .title {
+  background-color: #1da1f3;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 100;
+  gap: 10px;
+}
+
+.item-grp .item {
+  text-align: center;
+  border-bottom: 1px solid #545656;
+  padding: 15px;
+  font-weight: 100 !important;
+  font-size: 14px !important;
+}
+
+.roadmap-grp .title {
+  background-color: #1da1f3;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: 100;
+  gap: 10px;
+}
+
+.roadmap-grp .item {
+  border-bottom: 1px solid #545656;
+  padding: 15px;
+  font-weight: 100 !important;
+  font-size: 14px !important;
+}
+
+.investor-grp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
+}
+
+.investor-grp .item {
+  margin: 10px 0;
+}
+
+.investor-grp .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .token-box.active {
@@ -724,6 +886,14 @@ a:hover {
 
 .pb-100 {
   padding-bottom: 100px;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-20 {
+  gap: 20px;
 }
 
 .pt-100 {
@@ -943,7 +1113,8 @@ a:hover {
       rgba(1, 169, 206, 1) 0%,
       rgba(0, 119, 206, 1) 100%);
   padding: 30px;
-  border-radius: 8px;
+  border-radius: 20px;
+  margin: 0;
 }
 
 .app-sec-inner h3 {
@@ -1049,6 +1220,10 @@ a:hover {
   display: block;
 }
 
+.submitwrap .submit-container {
+  margin: 0 -5px;
+}
+
 .submitwrap .row .form-group {
   position: relative;
   padding: 0 6px;
@@ -1068,7 +1243,7 @@ a:hover {
   background: #101010;
   border: 2px solid #3f3f3f;
   color: #ffffff;
-  border-radius: 24px;
+  border-radius: 19px;
 }
 
 .submitwrap .form-group input[type="text"],
@@ -1108,7 +1283,7 @@ footer .footer-form .submitwrap textarea {
   background: #101010;
   border: 2px solid #3f3f3f;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 5px !important;
 }
 
 footer .footer-form .submitwrap textarea {
@@ -1161,6 +1336,8 @@ footer .footer-form .submitwrap textarea {
   border-radius: 5px;
   transition: all 0.4s ease;
   margin-right: 8px;
+  min-width: 31px;
+  text-align: center;
 }
 
 .footer-link ul li span:hover {
@@ -1193,6 +1370,8 @@ footer .footer-form .submitwrap textarea {
   border-radius: 5px;
   transition: all 0.4s ease;
   margin-right: 8px;
+  min-width: 31px;
+  text-align: center;
 }
 
 .social-link ul li span:hover {
@@ -1279,6 +1458,11 @@ footer .footer-form .submitwrap textarea {
 }
 
 @media (max-width: 1024px) {
+
+  .investor-grp {
+    padding: 100px 15px 0;
+  }
+
   .roadmap-section .roadmap-box .image-layer {
     background-image: none;
   }
@@ -1289,6 +1473,10 @@ footer .footer-form .submitwrap textarea {
 }
 
 @media (max-width: 600px) {
+  .whitepaper {
+    padding: 10px 0;
+  }
+
   .main-banner .lower-content {
     padding: 0;
   }
