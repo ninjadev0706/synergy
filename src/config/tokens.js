@@ -9,18 +9,18 @@ export const tokenlist = [
         id: 2,
         name: "BUSD",
         image: "/tokens/BUSD.png",
-        address: "0xE71a93D5089db5F115DBd9644CA8538A69813362"
+        address: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
     },
     {
         id: 3,
         name: "USDC",
         image: "/tokens/USDC.png",
-        address: "0x632c9b56D8187eeeEDdA3dC1BC241245D5d0A7F5"
+        address: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d"
     },
     {
         id: 4,
         name: "USDT",
         image: "/tokens/USDT.png",
-        address: "0xB3e08b8bf27D7325D31fb520d0dF786074a128E6"
+        address: "0x55d398326f99059fF775485246999027B3197955"
     },
 ]
