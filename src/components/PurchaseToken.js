@@ -70,45 +70,9 @@ const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
                       buyWithBNB={buyWithBNB}
                       buyWithTokens={buyWithTokens}
                     />
-                    {/* <div className="inner">
-                      <h5>Pre Sale</h5>
-                      <div className="progress-box">
-                        <div className="bar-outer">
-                          <div className="bar-inner">
-                            <div className="bar" style={{ width: "70%" }}></div>
-                          </div>
-                          <div className="pt pt-one">
-                            <span>Ico</span>
-                          </div>
-                          <div className="pt pt-two">
-                            <span>Soft Cap</span>
-                          </div>
-                          <div className="pt pt-three">
-                            <span>Hard Cap</span>
-                          </div>
-                          <div className=" pt-four">
-                            <span>0</span>
-                          </div>
-                          <div className=" pt-five">
-                            <span>14.000.000 USD</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </div>
-              {/* <div
-                className="home-down"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-              >
-                <div className="link">
-                  <a href="#" className="main-btn">
-                    <span className="txt">Purchase tokens</span>
-                  </a>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

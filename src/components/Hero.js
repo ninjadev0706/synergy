@@ -119,7 +119,7 @@ const Hero = props => {
 
   return (
     <>
-      <Header account={account} handleLogin={handleLogin} handleLogout={handleLogout} copyToClipBoard={copyToClipBoard} promiseData={promiseData} />
+      {/* <Header account={account} handleLogin={handleLogin} handleLogout={handleLogout} copyToClipBoard={copyToClipBoard} promiseData={promiseData} /> */}
       {/* <NotificationContainer /> */}
     </>
   );

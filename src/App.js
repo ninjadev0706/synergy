@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
-// import ccoin_abi from "./utils/CCOINabi.json";
-// import presale_abi from "./utils/PRESALEabi.json";
-// import vesting_abi from "./utils/VESTINGabi.json";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Home from "./pages/Home";
-import Swap from "./pages/Swap";
-import Vesting from "./pages/Vesting";
 import Hero from "./components/Hero";
 import BigNumber from "bignumber.js";
 import { ethers } from "ethers";
@@ -18,7 +13,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import ICOContract_ABI from "./config/abi/ICOContract_ABI.json";
-import erc20_ABI from "./config/abi/erc20.json";
 
 LoadingOverlay.propTypes = undefined;
 
