@@ -1,4 +1,22 @@
+import { useState, useEffect } from "react";
+
 const Footer = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phonenumber: "",
+    message: "",
+  });
+
+  const updateFormData = event =>
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value
+    });
+
+  const { firstName, lastName, email, phonenumber, message } = formData;
+
   return (
     <footer>
       <div className="footer-top">
@@ -12,10 +30,12 @@ const Footer = () => {
                     <div className="form-group col-lg-6 col-md-6 col-sm-12">
                       <div className="field-inner">
                         <input
+                          value={firstName}
                           type="text"
                           id="cc_first"
-                          name="cc_first"
+                          name="firstName"
                           placeholder="Firstname"
+                          onChange={e => updateFormData(e)}
                           required
                         />
                       </div>
@@ -23,20 +43,24 @@ const Footer = () => {
                     <div className="form-group col-lg-6 col-md-6 col-sm-12">
                       <div className="field-inner">
                         <input
+                          value={lastName}
                           type="text"
                           id="cc_last"
                           placeholder="Lastname"
-                          name="cc_last"
+                          name="lastName"
+                          onChange={e => updateFormData(e)}
                         />
                       </div>
                     </div>
                     <div className="form-group col-lg-6 col-md-6 col-sm-12">
                       <div className="field-inner">
                         <input
+                          value={email}
                           type="email"
                           id="cc_email"
-                          name="cc_email"
+                          name="email"
                           placeholder="Email Address"
+                          onChange={e => updateFormData(e)}
                           required
                         />
                       </div>
@@ -44,19 +68,23 @@ const Footer = () => {
                     <div className="form-group col-lg-6 col-md-6 col-sm-12">
                       <div className="field-inner">
                         <input
+                          value={phonenumber}
                           type="text"
                           id="cc_mbl"
                           placeholder="Phone Number"
-                          name="cc_mbl"
+                          name="phonenumber"
+                          onChange={e => updateFormData(e)}
                         />
                       </div>
                     </div>
                     <div className="form-group col-lg-12 col-md-12 col-sm-12">
                       <div className="field-inner">
                         <textarea
+                          value={message}
                           name="message"
                           placeholder="Your Message ..."
                           id="cc_ques"
+                          onChange={e => updateFormData(e)}
                           required
                         ></textarea>
                       </div>

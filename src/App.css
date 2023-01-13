@@ -512,12 +512,12 @@ a:hover {
   margin-top: 25px;
 }
 
-.benefit .inner-box h4 {
+.benefit .inner-box h6 {
   font-weight: 500;
   color: #ffffff;
   text-transform: capitalize;
   font-size: 22px;
-  padding: 25px 0;
+  padding: 15px 0;
 }
 
 .benefit .inner-box .text {
@@ -1098,6 +1098,43 @@ a:hover {
   line-height: 1.5em;
 }
 
+.team-img {
+  opacity: 0.8;
+}
+
+.team-introduce {
+  color: white;
+  line-height: 1.2;
+}
+
+.team-introduce .name {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.team-introduce .rol {
+  font-size: 15px;
+}
+
+.team-introduce .team-border {
+  display: inline-block;
+  width: 40px;
+  height: 3px;
+  background-color: #1da1f3;
+  text-align: center;
+  border-radius: 5px;
+} 
+
+.teammate-box {
+  position: absolute;
+  display: block;
+  padding: 30px 20px;
+  border-radius: 0 0 20px 20px;
+  bottom: 0px;
+  padding-bottom: 10px;
+}
+
 .main-bor {
   display: inline-block;
   width: 150px;
@@ -1260,9 +1297,9 @@ a:hover {
   height: 48px;
   width: 100%;
   font-size: 16px;
-  color: #101010;
+  color: white;
   line-height: 24px;
-  font-weight: 400;
+  font-weight: 100;
   padding: 11px 20px;
 
   border-radius: 10px;
