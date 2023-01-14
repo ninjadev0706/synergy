@@ -18,7 +18,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-image: url("../assets/navbar.png");
   /* background-size: cover; */
   z-index: 1;
 }
