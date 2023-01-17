@@ -47,7 +47,7 @@ const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
                           <div className="ban-contain">
                             <div className="banner-head">
                               <h1 data-aos="zoom-in" data-aos-duration="2000">
-                                Integrating E-Commerce with Blockchain
+                                Integrating <br /> E-Commerce with Blockchain
                               </h1>
                               <p>
                                 The platform helps investors ensure a safe entry to our coin
@@ -56,13 +56,16 @@ const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
                           </div>
                         </div>
                       </div>
-                      <div className=""><h5>Pre-sale will be live on</h5></div>
-                      <div className="time-counter">
-                        <Countdown date={startTime} renderer={displayTime} />
+                      <div className="link">
+                        <a
+                          href="/"
+                          className="main-btn"
+                        >
+                          <span className="txt">Purchase tokens</span>
+                        </a>
                       </div>
                     </div>
                   </div>
-
                   <div className="progress-col col-lg-6 col-md-12 col-sm-12">
                     <BuyToken
                       account={account}

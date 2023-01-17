@@ -10,20 +10,12 @@ const AboutToken = () => {
           </div>
           <div className="col-lg-6">
             <div className="about-content">
-              <h1>Why Ico</h1>
+              <h1>WHY ICO?</h1>
               <p>
-                In the crypto ecosystem, an ICO refers to an Intial coin
-                offering. An ICO simply involves the public sale of a coin to
-                investors who wish to hold the coin with the view of earning
-                returns from it as well as enjoy access to certain services or
-                rewards.
+                Simply put, our coin exists to help investors earn big. Formally known as an Initial Coin Offering, an ICO involves the public sale of a coin to investors, with the opportunity to use said coins to enjoy a product or service – like online shopping.
               </p>
               <p>
-                We have a total of 20,000,000,000 crypto tokens in supply of
-                these tokens, 190,000,000 of them we will put for sale in the
-                initial coin offering. This will offer investors a chance to
-                have a stake in our crypto so they can start earning passive
-                income and rewards.
+                With 20,000,000,000, tokens in total – 190,000,000 of which will be for sale in the ICO – we’re giving investors everywhere free rein to earn rewards, build a passive income stream, and turn their back on traditional investments as we know them.
               </p>
               <div className="link">
                 <a
