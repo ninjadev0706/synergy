@@ -1533,6 +1533,10 @@ footer .footer-form .submitwrap textarea {
     padding: 10px 0;
   }
 
+  .bg-app {
+    padding: 20px 10px;
+  }
+
   .main-banner .lower-content {
     padding: 0;
   }

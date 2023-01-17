@@ -9,6 +9,9 @@ const Team = () => {
                 Team Management
               </h2>
               <span className="main-bor"></span>
+              <p>
+                Offering users optimal utility and a prime opportunity for generating income
+              </p>
             </div>
           </div>
         </div>
