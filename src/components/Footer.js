@@ -21,86 +21,8 @@ const Footer = () => {
     <footer>
       <div className="footer-top">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-5">
-              <div className="footer-form">
-                <div className="submitwrap footer-form-head">
-                  <h3>Leave Us a Message</h3>
-                  <div className="row clearfix submit-container">
-                    <div className="form-group col-lg-6 col-md-6 col-sm-12">
-                      <div className="field-inner">
-                        <input
-                          value={firstName}
-                          type="text"
-                          id="cc_first"
-                          name="firstName"
-                          placeholder="Firstname"
-                          onChange={e => updateFormData(e)}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group col-lg-6 col-md-6 col-sm-12">
-                      <div className="field-inner">
-                        <input
-                          value={lastName}
-                          type="text"
-                          id="cc_last"
-                          placeholder="Lastname"
-                          name="lastName"
-                          onChange={e => updateFormData(e)}
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group col-lg-6 col-md-6 col-sm-12">
-                      <div className="field-inner">
-                        <input
-                          value={email}
-                          type="email"
-                          id="cc_email"
-                          name="email"
-                          placeholder="Email Address"
-                          onChange={e => updateFormData(e)}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group col-lg-6 col-md-6 col-sm-12">
-                      <div className="field-inner">
-                        <input
-                          value={phonenumber}
-                          type="text"
-                          id="cc_mbl"
-                          placeholder="Phone Number"
-                          name="phonenumber"
-                          onChange={e => updateFormData(e)}
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group col-lg-12 col-md-12 col-sm-12">
-                      <div className="field-inner">
-                        <textarea
-                          value={message}
-                          name="message"
-                          placeholder="Your Message ..."
-                          id="cc_ques"
-                          onChange={e => updateFormData(e)}
-                          required
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div className="form-group col-lg-12 col-md-12 col-sm-12">
-                      <div className="">
-                        <button type="submit" className="main-btn" style={{ borderRadius: "5px", padding: '5px 15px', boxShadow: '0px 10px 18px #1da1f387' }}>
-                          Submit Your Message
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
+          <div className="footer-wrap">
+            <div className="col-lg-4 contact">
               <div className="footer-link-area">
                 <div className="footer-head">
                   <h3>Contact Us</h3>
@@ -129,50 +51,54 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 follow">
               <div className="footer-link-area">
                 <div className="footer-head">
                   <h3>Follow Us</h3>
                 </div>
                 <div className="social-link">
                   <ul>
-                    <li>
+                    <li className="col-6">
                       <span>
                         <a
-                          href="https://twitter.com/SoMeSynergy"
+                          href="https://twitter.com/Synergy_SURF"
                           target="_blank"
                         >
                           <i className="fa fa-twitter"></i>
                         </a>
-                      </span>{" "}
+                      </span>
+                      Twitter
                     </li>
-                    <li>
+                    <li className="col-6">
                       <span>
                         <a href="" target="_blank">
                           <i className="fa fa-facebook-f"></i>
                         </a>
                       </span>
+                      Facebook
                     </li>
-                    <li>
+                    <li className="col-6">
                       <span>
                         <a href="https://t.me/SynergySurf" target="_blank">
                           <i className="fa fa-paper-plane"></i>
                         </a>
                       </span>
+                      Telegram
                     </li>
-                    <li>
+                    <li className="col-6">
                       <span>
                         <a href="" target="_blank">
                           <i className="fa fa-instagram"></i>
                         </a>
                       </span>
+                      Instagram
                     </li>
                   </ul>
                 </div>
-                <div className="p-20">
-                  <img src="/images/position.png" alt="" />
-                </div>
               </div>
+            </div>
+            <div className="map">
+              <img src="/images/position.png" alt="" />
             </div>
           </div>
         </div>

@@ -1361,6 +1361,12 @@ footer .footer-form .submitwrap textarea {
   border-color: #3772ff;
 }
 
+.footer-wrap {
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .footer-form-head h3 {
   font-size: 22px;
   color: #fff;
@@ -1397,13 +1403,18 @@ footer .footer-form .submitwrap textarea {
   text-align: center;
 }
 
+
+.contact,
+.follow,
+map {
+  padding: 0 !important;
+}
+
 .footer-link ul li span:hover {
   background-color: #1da1f3;
 }
 
-.footer-link-area {
-  padding-left: 15px;
-}
+.footer-link-area {}
 
 .social-link ul {
   margin: 0;
@@ -1414,7 +1425,7 @@ footer .footer-form .submitwrap textarea {
   list-style-type: none;
   padding: 15px 0;
   color: #fff;
-  display: inline-block;
+  display: block;
   margin-right: 10px;
 }
 
@@ -1617,5 +1628,23 @@ footer .footer-form .submitwrap textarea {
   .roadmap-section .roadmap-box {
     padding-right: 0px !important;
     overflow: hidden;
+  }
+
+  .footer-wrap {
+    display: block;
+  }
+
+  .contact,
+  .follow,
+  .map {
+    padding: 20px 0 !important;
+  }
+
+  .social-link ul {
+    display: inline-block;
+  }
+  
+  .social-link ul li {
+    display: inline-block;
   }
 }
