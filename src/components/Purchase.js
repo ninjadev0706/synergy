@@ -17,7 +17,6 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
   const [toAmount, setToAmount] = useState(0);
   const [approveLoading, setApproveLoading] = useState(false);
   const [isloading, setLoading] = useState(false);
-  const [rate, setRate] = useState(0.0);
   const [selectedToken, setSelectToken] = useState(1);
   const [selectedTokenPrice, setSelectTokenPrice] = useState(0);
   const [isOpen, setOpen] = useState(false);
@@ -135,17 +134,17 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
         const balance = await _provider.getBalance(account);
         const balanceInEth = ethers.utils.formatEther(balance);
         console.log("balanceInEth => ", Number(balanceInEth).toFixed(4))
-        setAvailableTokenBal((((Math.floor(Number(balanceInEth).toFixed(4)*10000)-30) > 0) && Math.floor(Number(balanceInEth).toFixed(4)*10000)-30)/10000);
+        setAvailableTokenBal((((Math.floor(Number(balanceInEth).toFixed(4) * 10000) - 30) > 0) && Math.floor(Number(balanceInEth).toFixed(4) * 10000) - 30) / 10000);
       } else {
         const TokenContract = new ethers.Contract(selectedTokenAddr, erc20_ABI, signer);
         availableBal = await TokenContract.balanceOf(account);
         const allow_val = await TokenContract.allowance(account, promiseData.icoAddr);
         setAllowance(Number(allow_val));
-        setAvailableTokenBal((Math.floor(new BigNumber(availableBal._hex).dividedBy(10 ** 18).toNumber().toFixed(2)*100))/100);
+        setAvailableTokenBal((Math.floor(new BigNumber(availableBal._hex).dividedBy(10 ** 18).toNumber().toFixed(2) * 100)) / 100);
       }
       const SYRFContract = new ethers.Contract(syrfAddr, erc20_ABI, signer);
       const availableToken = await SYRFContract.balanceOf(account);
-      setAvailableSYRF((Math.floor(new BigNumber(availableToken._hex).dividedBy(10 ** 18).toNumber().toFixed(2)*100))/100);
+      setAvailableSYRF((Math.floor(new BigNumber(availableToken._hex).dividedBy(10 ** 18).toNumber().toFixed(2) * 100)) / 100);
     }
   }
 
@@ -168,42 +167,44 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
   return (
     <>
       <div className="right-contentarea">
-        {promiseData.icoState !== 1 ? (
-          promiseData.icoState === 0 ?
-            (
-              <div className="calendar-section">
-                <img alt="calendar" src="calendar.png" />
-                <p className="font-non-nulshock fs-20 ml-10">&nbsp;Presale not start</p>
-              </div>
-            ) : (
-              <div className="calendar-section">
-                <img alt="calendar" src="calendar.png" />
-                <p className="font-non-nulshock fs-20 ml-10">&nbsp;Presale ended</p>
-              </div>
-            )
-        ) : (
-          <Calendar />
-        )}
+        <div className="d-flex justify-content-between">
+          {promiseData.icoState !== 1 ? (
+            <div className="private-button  fs-14">PRIVATE</div>
+          ) : (
+            <div className="live-button  fs-14">LIVE</div>
+          )}
+
+          {promiseData.icoState !== 1 ? (
+            promiseData.icoState === 0 ?
+              (
+                <div className="calendar-section">
+                  <img alt="calendar" src="calendar.png" />
+                  <p className="font-non-nulshock fs-20 ml-10">&nbsp;Presale not start</p>
+                </div>
+              ) : (
+                <div className="calendar-section">
+                  <img alt="calendar" src="calendar.png" />
+                  <p className="font-non-nulshock fs-20 ml-10">&nbsp;Presale ended</p>
+                </div>
+              )
+          ) : (
+            <Calendar />
+          )}
+        </div>
 
         <div className="progress-section font-non-nulshock t-white fs-20">
           <div className="progress-title">
-            <p>Progress</p>
-            <p>
-              {promiseData && promiseData.soldAmount} / 20000000{" "}
-              SYRF
-            </p>
+            <div>
+              <div className="desc">SOLD</div>
+              <div>{promiseData && promiseData.soldAmount ? promiseData.soldAmount.toLocaleString() : '0'}</div>
+            </div>
+            <div>
+              <div className="desc right">AVAILABLE</div>
+              <div>{promiseData["total_token"]?.toLocaleString()}</div>
+            </div>
           </div>
           <div className="mt-10">
             <ProgressBar
-              label={
-                promiseData["total_token"] === undefined &&
-                  promiseData["soldAmount"] === undefined
-                  ? "0%"
-                  : `${progress(
-                    Number(promiseData["soldAmount"]),
-                    Number(promiseData["total_token"])
-                  )}%`
-              }
               now={
                 promiseData["soldAmount"] === undefined &&
                   promiseData["total_token"] === undefined
@@ -234,7 +235,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
           <div className="from-container">
             <div className="balance-title font-non-nulshock t-grey2 fs-20">
               <p>From</p>
-              <p>Available: {account ? availableTokenBal : 0}</p>
+              <p>Balance: {account ? availableTokenBal : 0} {tokenlist.find(item => item.id === selectedToken).name}</p>
             </div>
             <div className="avax-container">
               <input
@@ -245,7 +246,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
                 disabled={(account && promiseData.icoState === 1) ? false : true}
                 readOnly={account ? false : true}
                 onChange={(e) => {
-                  setToAmount(e.target.value * selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice);
+                  setToAmount((e.target.value * selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice).toFixed(4));
                   setFromAmount(e.target.value);
                 }}
               />
@@ -265,6 +266,9 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
                   <img alt="" className="avax-img ml-20" src={`${tokenlist.find(item => item.id === selectedToken).image}`} />
                   <p className="avax-letter ml-20">{tokenlist.find(item => item.id === selectedToken).name}</p>
                 </div>
+                <div style={{paddingRight: "10px", cursor:"pointer"}} onClick={() => setOpen(!isOpen)}>
+                  <img alt="" className="" src="./under-arrow.png" height="10px" width="15px"/>
+                </div>
               </div>
             </div>
           </div>
@@ -276,7 +280,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
         <div className="to-container">
           <div className="available-title font-non-nulshock t-grey2 fs-20">
             <p>To</p>
-            <p>Balance: {availableSYRF}</p>
+            <p>Balance: {availableSYRF} SYRF</p>
           </div>
           <div className="ccoin-container">
             <input
@@ -286,7 +290,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
               value={toAmount}
               readOnly={(account && !isEnded) ? false : true}
               onChange={(e) => {
-                setFromAmount(e.target.value * (promiseData.syrfPrice / (10 ** 2)) / selectedTokenPrice);
+                setFromAmount((e.target.value * (promiseData.syrfPrice / (10 ** 2)) / selectedTokenPrice).toFixed(4));
                 setToAmount(e.target.value);
               }}
             />
@@ -294,43 +298,6 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
               <img alt="coin" className="ccoin-img" src="./tokens/SYRF.png" />
               <p className="ccoin-letter ml-20">SYRF</p>
             </div>
-          </div>
-        </div>
-        <div className="ccoin-price-section font-non-nulshock t-white fs-20">
-          <p>Price</p>
-          <div className="ccoin-price-title">
-            {rate === 0 ? (
-              <p>
-                {promiseData.syrfPrice && Number(selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice).toLocaleString(
-                  undefined,
-                  {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 4,
-                  }
-                )}{" "}
-                SYRF per {tokenlist.find(item => item.id === selectedToken).name}
-              </p>
-            ) : (
-              <p>
-                {selectedTokenPrice && Number(promiseData.syrfPrice / (selectedTokenPrice * (10 ** 2))).toLocaleString(
-                  undefined,
-                  {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 4,
-                  }
-                )}{" "}
-                {tokenlist.find(item => item.id === selectedToken).name} per SYRF
-              </p>
-            )}
-            <img
-              alt="direction"
-              className="two-direction-img ml-5"
-              src="two-direction.png"
-              onClick={() => {
-                if (rate === 1) setRate(0);
-                else setRate(1);
-              }}
-            />
           </div>
         </div>
         <div>

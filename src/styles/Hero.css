@@ -268,16 +268,17 @@ a.font-dark {
 }
 
 .rightsidebar {
-  background-color: #262626;
+  background: linear-gradient(#2F3542 0%, #000000 100%, #fff 10%);
+  border: 1px solid #6c757d9e;
   backdrop-filter: blur(5px);
-  border-radius: 20px;
+  border-radius: 16px;
   color: white;
   /* padding: 50px; */
   display: flex;
   position: relative;
   /* width: 50%; */
   height: 100%;
-  min-width: 450px;
+  min-width: 480px;
 }
 
 .rightsidebar-content {
@@ -285,31 +286,31 @@ a.font-dark {
 }
 
 .right-contentarea {
-  padding: 40px;
+  padding: 30px;
 }
 
 .private-button {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  background: rgb(38 38 38);
-  color: #bd2130;
-  border: 2px solid #bd2130;
-  border-radius: 12px;
-  padding: 0 15px;
-  height: 26px;
+  background: #F44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 8px;
+  padding-top: 1px;
 }
 
 .live-button {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  background: rgb(38 38 38);
-  color: #1da1f3;
-  border: 2px solid #1da1f3;
-  border-radius: 12px;
-  padding: 0 15px;
-  height: 26px;
+  background: #2ec550;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 8px;
+  padding-top: 1px;
 }
 
 .lock-timer {
@@ -368,8 +369,10 @@ a.font-dark {
   cursor: text;
   outline: none !important;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100;
+  font-size: 32px;
   width: 100%;
+  max-width: 275px;
 }
 
 .input-value-section::-webkit-outer-spin-button,
@@ -386,7 +389,7 @@ a.font-dark {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 2px;
 }
 
 .calendar-title {
@@ -394,21 +397,31 @@ a.font-dark {
 }
 
 .progress-section {
-  padding: 30px 5px;
+  padding-bottom: 25px;
 }
 
 .progress-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 0 10px 0;
+}
+
+.progress-title .desc {
+  color: #1DA1F2;
+}
+
+.progress-title .right {
+  text-align: right;
 }
 
 .progress {
-  background-color: #1da1f399;
+  /* background-color: #1da1f399; */
+  background: #8589917d;
   border-radius: 50px;
   font-size: 13px;
   color: #ffffff;
-  height: 20px;
+  height: 8px;
 }
 
 .progress1 .progress-bar {
@@ -418,7 +431,7 @@ a.font-dark {
 }
 
 .progress2 .progress-bar {
-  background-color: #1da1f3;
+  background-color: #1DA1F2;
   border-radius: 50px;
   /* height: 100%; */
 }
@@ -426,7 +439,6 @@ a.font-dark {
 .from-container,
 .to-container {
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 20px;
 }
 
@@ -435,7 +447,9 @@ a.font-dark {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 22px 8px 22px;
+  padding: 5px 10px;
+  background: #2F3542;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .balance-title,
@@ -443,7 +457,9 @@ a.font-dark {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 22px 0 22px;
+  background: linear-gradient(90deg, #00D2FF 0%, #3A7BD5 100%);
+  border-radius: 8px 8px 0px 0px;
+  padding: 10px 15px;
 }
 
 .max-button-section {
@@ -453,9 +469,9 @@ a.font-dark {
 }
 
 .max-button {
-  background: #262626;
-  border: 0.5px solid #1da1f3;
-  border-radius: 8px;
+  background: transparent;
+  border: 0.5px solid #1da1f2;
+  border-radius: 5px;
   color: #1da1f3;
   font-weight: 500;
   font-size: 10px;
@@ -478,6 +494,7 @@ a.font-dark {
   align-items: center;
   padding: 5px 10px 5px 0;
   width: 95px;
+  cursor: pointer;
 }
 
 .avax-section,
@@ -508,8 +525,8 @@ a.font-dark {
 }
 
 .amount-button {
-  background: #1da1f3;
-  border-radius: 20px;
+  background: #1DA1F2;
+  border-radius: 8px;
   border: none;
   color: #ffffff;
   font-weight: 500;
@@ -517,6 +534,7 @@ a.font-dark {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .amount-button:focus {
@@ -524,8 +542,8 @@ a.font-dark {
 }
 
 .big-order-button {
-  background: #1da1f3;
-  border-radius: 20px;
+  background: #1DA1F2;
+  border-radius: 8px;
   border: none;
   color: #ffffff;
   font-weight: 500;
@@ -533,6 +551,7 @@ a.font-dark {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .big-order-button:focus {
@@ -549,7 +568,7 @@ a.font-dark {
 
 .insufficient-button {
   background: #dc3545;
-  border-radius: 20px;
+  border-radius: 8px;
   border: none;
   color: #ffffff;
   font-weight: 500;
@@ -557,6 +576,7 @@ a.font-dark {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .insufficient-button:focus {
@@ -565,7 +585,7 @@ a.font-dark {
 
 .min-price-button {
   background: #1da1f3;
-  border-radius: 20px;
+  border-radius: 8px;
   border: none;
   color: #ffffff;
   font-weight: 500;
@@ -573,6 +593,7 @@ a.font-dark {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .min-price-button:focus {
@@ -722,7 +743,7 @@ a.font-dark {
 }
 
 .t-grey2 {
-  color: #aaaaaa;
+  color: #fff;
 }
 
 .t-grey3 {
@@ -780,7 +801,7 @@ a.font-dark {
     text-align: center;
     padding-left: 0;
   }
-  
+
   #logo {
     font-size: 18px;
     float: left;
@@ -931,7 +952,7 @@ a.font-dark {
     margin-left: 0;
   }
 
-  .balance-title,
+  /* .balance-title,
   .available-title {
     padding: 8px 5px 0 5px;
   }
@@ -939,7 +960,7 @@ a.font-dark {
   .avax-container,
   .ccoin-container {
     padding: 15px 5px 8px 5px;
-  }
+  } */
 
   .avax-img,
   .avax-letter,
