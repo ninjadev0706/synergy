@@ -228,7 +228,7 @@ const Roadmap = () => {
                                 <div className="d-flex title col-xs-12">
                                     <div className="col-xs-12">
                                         <div className="d-flex gap-10">
-                                            <div><img src="/images/token-tokens.png" alt="" height="30px" /></div>
+                                            <div><img src="/images/token-tokens.png" alt="" height="35px" /></div>
                                             <div>ICO Funding</div>
                                         </div>
                                     </div>
@@ -281,7 +281,7 @@ const Roadmap = () => {
                                 <div className="d-flex title col-xs-12">
                                     <div className="col-xs-12">
                                         <div className="d-flex gap-10">
-                                            <div><img src="/images/people.png" alt="" height="30px" /></div>
+                                            <div><img src="/images/people.png" alt="" height="35px" /></div>
                                             <div>Users & Sellers</div>
                                         </div>
                                     </div>
@@ -338,8 +338,8 @@ const Roadmap = () => {
                                 <div className="d-flex title col-xs-12">
                                     <div className="col-xs-12">
                                         <div className="d-flex gap-10">
-                                            <div><img src="/images/capital.png" alt="" height="30px" /></div>
-                                            <div>Users & Sellers</div>
+                                            <div><img src="/images/capital.png" alt="" height="35px" /></div>
+                                            <div>Synergy Venture Capital</div>
                                         </div>
                                     </div>
                                 </div>
@@ -383,8 +383,8 @@ const Roadmap = () => {
                                 <div className="d-flex title col-xs-12">
                                     <div className="col-xs-12">
                                         <div className="d-flex gap-10">
-                                            <div><img src="/images/people.png" alt="" height="30px" /></div>
-                                            <div>Users & Sellers</div>
+                                            <div><img src="/images/people.png" alt="" height="35px" /></div>
+                                            <div>Team</div>
                                         </div>
                                     </div>
                                 </div>
@@ -428,7 +428,7 @@ const Roadmap = () => {
                                 <div className="d-flex title col-xs-12">
                                     <div className="col-xs-12">
                                         <div className="d-flex gap-10">
-                                            <div><img src="/images/revenue.png" alt="" height="30px" /></div>
+                                            <div><img src="/images/revenue.png" alt="" height="35px" /></div>
                                             <div>Revenue & Operating Profits</div>
                                         </div>
                                     </div>
