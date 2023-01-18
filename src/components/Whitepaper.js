@@ -75,7 +75,7 @@ const Whitepaper = () => {
                     href="/images/whitepaper.pdf"
                     target="_blank"
                   >
-                    <div className="d-flex gap-10 download-btn">
+                    <div className="d-flex gap-10 download-btn1">
                       <div>
                         <img
                           src="/images/download.png"
@@ -87,10 +87,10 @@ const Whitepaper = () => {
                     </div>
                   </a>
                   <a
-                    href="/images/whitepaper.pdf"
+                    href="/images/investor.pdf"
                     target="_blank"
                   >
-                    <div className="d-flex gap-10 download-btn">
+                    <div className="d-flex gap-10 download-btn2">
                       <div>
                         <img
                           src="/images/download.png"

@@ -21,85 +21,45 @@ const Footer = () => {
     <footer>
       <div className="footer-top">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="main-head">
+          <div className="">
+            <div className="footer-container">
+              <div className="footer-head">
                 <h2 data-aos="fade-up" data-aos-duration="2000">
-                  Contact Us
+                  Don’t Miss Out, Stay Updated
                 </h2>
                 <span className="main-bor"></span>
-                <p>
-                  We are always open and we welcome and questions you have for our team. <br /> If you wish to get in touch, please fill out the form below.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="footer-wrap">
-            <div className="col-lg-6 contact">
-              <div className="footer-link-area">
-                {/* <div className="footer-head">
-                  <h3>Contact Us</h3>
-                </div> */}
-                <div className="footer-link">
-                  <ul>
-                    <li className="">
-                      <img className="mr-10" src="./email.png" width="50px" alt=""/>
-                      info@synergy.com
-                    </li>
-                    <li>
-                      <img className="mr-10" src="./phone.png" width="50px" alt="" />
-                      +1 702 333 666
-                    </li>
-                    <li>
-                      <img className="mr-10" src="./position.png" width="50px" alt="" />
-                      APR Streen USA
-                    </li>
-                  </ul>
+                <div className="input-wrap">
+                  <div className="input">
+                    <input placeholder="Enter your email" />
+                  </div>
+                  <div>
+                    <div className="subscribe-btn">
+                      SUBSCRIBE
+                    </div>
+                  </div>
+                </div>
+                <div className="desc">
+                  Don’t hesitate to subscribe to latest news about ICO markets as well as crucial financial knowledge to become successful investors globally
+                </div>
+                <div className="social-ico-wrap">
+                  <div>
+                    <img src="/social/telegram.svg" alt="" width="40px" />
+                  </div>
+                  <div>
+                    <a href="https://twitter.com/Synergy_SURF" target="_blank" rel="noreferrer"><img src="/social/twitter.svg" alt="" width="40px" /></a>
+                  </div>
+                  <div>
+                    <img src="/social/linkedin.svg" alt="" width="40px" />
+                  </div>
+                  <div>
+                    <img src="/social/youtube.svg" alt="" width="40px" />
+                  </div>
+                  <div>
+                    <img src="/social/instagram.svg" alt="" width="40px" />
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 follow">
-              <div className="footer-link-area">
-                {/* <div className="footer-head">
-                  <h3>Follow Us</h3>
-                </div> */}
-                <div className="social-link">
-                  <ul>
-                    <li className="col-6">
-                      <a
-                        href="https://twitter.com/Synergy_SURF"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <img className="mr-10" src="./email.png" width="50px" alt="" />
-                      </a>
-                      Twitter
-                    </li>
-                    <li className="col-6">
-                      <a href="/" target="_blank" >
-                        <img className="mr-10" src="./email.png" width="50px" alt="" />
-                      </a>
-                      Facebook
-                    </li>
-                    <li className="col-6">
-                      <a href="https://t.me/SynergySurf" target="_blank" rel="noreferrer">
-                        <img className="mr-10" src="./email.png" width="50px" alt="" />
-                      </a>
-                      Telegram
-                    </li>
-                    <li className="col-6">
-                      <a href="/" target="_blank">
-                        <img className="mr-10" src="./email.png" width="50px" alt="" />
-                      </a>
-                      Instagram
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            {/* <div className="map">
-              <img src="/images/position.png" alt="" />
-            </div> */}
           </div>
         </div>
       </div>
@@ -109,7 +69,7 @@ const Footer = () => {
             <div className="col-lg-12">
               <div className="d-flex justify-content-between align-items-center flex-wrap">
                 <div className="footer-logo">
-                  <img src="/images/logo.png" alt="" className="img-fluid" />
+                  <img src="/images/social/logo.png" alt="" className="img-fluid" />
                 </div>
                 <div className="footer-bottom-link">
                   <ul>
