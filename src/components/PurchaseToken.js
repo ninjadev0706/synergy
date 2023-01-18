@@ -1,35 +1,6 @@
-import Countdown from "react-countdown";
 import BuyToken from "./BuyToken";
 
 const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
-  let startTime = 1673708400000;
-
-  const displayTime = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) {
-      return <></>;
-    } else {
-      return (
-        <div className="time-countdown clearfix" data-countdown="2023/01/15">
-          <div className="counter-column days">
-            <span className="count">{days}</span>
-            <span className="period">Days</span>
-          </div>{' '}
-          <div className="counter-column hours">
-            <span className="count">{hours}</span>
-            <span className="period">Hours</span>
-          </div>{' '}
-          <div className="counter-column minutes">
-            <span className="count">{minutes}</span>
-            <span className="period">Minutes</span>
-          </div>{' '}
-          <div className="counter-column seconds">
-            <span className="count">{seconds}</span>
-            <span className="period">Seconds</span>
-          </div>
-        </div>
-      );
-    }
-  };
 
   return (
     <section className="main-banner" id="home">
@@ -49,12 +20,14 @@ const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
                               <h1 data-aos="zoom-in" data-aos-duration="2000">
                                 Integrating <br /> E-Commerce with Blockchain
                               </h1>
-                              <p>
-                                The platform helps investors ensure a safe entry to our coin
-                              </p>
                             </div>
                           </div>
                         </div>
+                      </div>
+                      <div>
+                        <p className="header-desc">
+                          The platform helps investors ensure a safe entry to our coin
+                        </p>
                       </div>
                       <div className="link">
                         <a

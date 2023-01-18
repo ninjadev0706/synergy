@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown, ProgressBar } from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
 import { useWeb3React } from "@web3-react/core";
 import BigNumber from "bignumber.js";
 import { ethers } from "ethers";
@@ -255,7 +255,7 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
                   className="max-button"
                   onClick={() => {
                     setFromAmount(availableTokenBal);
-                    setToAmount(availableTokenBal * selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice);
+                    setToAmount((availableTokenBal * selectedTokenPrice * (10 ** 2) / promiseData.syrfPrice).toFixed(4));
                   }}
                 >
                   MAX

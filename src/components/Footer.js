@@ -1,105 +1,105 @@
-import { useState, useEffect } from "react";
+// import { useState } from "react";
 
 const Footer = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phonenumber: "",
-    message: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   phonenumber: "",
+  //   message: "",
+  // });
 
-  const updateFormData = event =>
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    });
+  // const updateFormData = event =>
+  //   setFormData({
+  //     ...formData,
+  //     [event.target.name]: event.target.value
+  //   });
 
-  const { firstName, lastName, email, phonenumber, message } = formData;
+  // const { firstName, lastName, email, phonenumber, message } = formData;
 
   return (
     <footer>
       <div className="footer-top">
         <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="main-head">
+                <h2 data-aos="fade-up" data-aos-duration="2000">
+                  Contact Us
+                </h2>
+                <span className="main-bor"></span>
+                <p>
+                  We are always open and we welcome and questions you have for our team. <br /> If you wish to get in touch, please fill out the form below.
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="footer-wrap">
-            <div className="col-lg-4 contact">
+            <div className="col-lg-6 contact">
               <div className="footer-link-area">
-                <div className="footer-head">
+                {/* <div className="footer-head">
                   <h3>Contact Us</h3>
-                </div>
+                </div> */}
                 <div className="footer-link">
                   <ul>
-                    <li>
-                      <span>
-                        <i className="fa fa-envelope"></i>
-                      </span>
+                    <li className="">
+                      <img className="mr-10" src="./email.png" width="50px" alt=""/>
                       info@synergy.com
                     </li>
                     <li>
-                      <span>
-                        <i className="fa fa-phone fa-lg"></i>
-                      </span>
+                      <img className="mr-10" src="./phone.png" width="50px" alt="" />
                       +1 702 333 666
                     </li>
                     <li>
-                      <span>
-                        <i className="fa fa-map-marker fa-lg"></i>
-                      </span>
+                      <img className="mr-10" src="./position.png" width="50px" alt="" />
                       APR Streen USA
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 follow">
+            <div className="col-lg-6 follow">
               <div className="footer-link-area">
-                <div className="footer-head">
+                {/* <div className="footer-head">
                   <h3>Follow Us</h3>
-                </div>
+                </div> */}
                 <div className="social-link">
                   <ul>
                     <li className="col-6">
-                      <span>
-                        <a
-                          href="https://twitter.com/Synergy_SURF"
-                          target="_blank"
-                        >
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                      </span>
+                      <a
+                        href="https://twitter.com/Synergy_SURF"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img className="mr-10" src="./email.png" width="50px" alt="" />
+                      </a>
                       Twitter
                     </li>
                     <li className="col-6">
-                      <span>
-                        <a href="" target="_blank">
-                          <i className="fa fa-facebook-f"></i>
-                        </a>
-                      </span>
+                      <a href="/" target="_blank" >
+                        <img className="mr-10" src="./email.png" width="50px" alt="" />
+                      </a>
                       Facebook
                     </li>
                     <li className="col-6">
-                      <span>
-                        <a href="https://t.me/SynergySurf" target="_blank">
-                          <i className="fa fa-paper-plane"></i>
-                        </a>
-                      </span>
+                      <a href="https://t.me/SynergySurf" target="_blank" rel="noreferrer">
+                        <img className="mr-10" src="./email.png" width="50px" alt="" />
+                      </a>
                       Telegram
                     </li>
                     <li className="col-6">
-                      <span>
-                        <a href="" target="_blank">
-                          <i className="fa fa-instagram"></i>
-                        </a>
-                      </span>
+                      <a href="/" target="_blank">
+                        <img className="mr-10" src="./email.png" width="50px" alt="" />
+                      </a>
                       Instagram
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className="map">
+            {/* <div className="map">
               <img src="/images/position.png" alt="" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -114,16 +114,16 @@ const Footer = () => {
                 <div className="footer-bottom-link">
                   <ul>
                     <li>
-                      <a href="#">About</a>
+                      <a href="/">About</a>
                     </li>
                     <li>
-                      <a href="#">Inventor</a>
+                      <a href="/">Inventor</a>
                     </li>
                     <li>
-                      <a href="#">Roadmap</a>
+                      <a href="/">Roadmap</a>
                     </li>
                     <li className="get-link">
-                      <a href="">Get the app</a>
+                      <a href="/">Get the app</a>
                     </li>
                   </ul>
                 </div>
@@ -140,17 +140,17 @@ const Footer = () => {
                 <div className="other-link">
                   <ul>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         Privacy Policy <span>|</span>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         Terms of use <span>|</span>
                       </a>
                     </li>
                     <li>
-                      <a href="#">Cookies</a>
+                      <a href="/">Cookies</a>
                     </li>
                   </ul>
                 </div>

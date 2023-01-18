@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../pages/connector";
 import { toast } from "react-toastify";
 import { useMediaQuery } from "react-responsive";
 import WalletBtn from "./WalletBtn";
 
-let isConfirm = false;
 let IsConnected = false;
 
 const Menu = () => {
@@ -13,12 +12,11 @@ const Menu = () => {
     query: "(min-width: 768px)",
   });
 
-  const { account, activate, deactivate, error, active, chainId } =
+  const { account, activate, deactivate, error } =
     useWeb3React();
 
   const handleLogin = async () => {
     IsConnected = true;
-    isConfirm = true;
     localStorage.setItem("accountStatus", "1");
     toast.success("Successfully Connected to Metamask", {
       position: "bottom-right",
@@ -31,7 +29,6 @@ const Menu = () => {
   };
 
   const handleLogout = () => {
-    isConfirm = false;
     localStorage.removeItem("accountStatus");
     toast.success("Disconnected", {
       position: "bottom-right",
@@ -55,7 +52,7 @@ const Menu = () => {
     if(localStorage.getItem("accountStatus")) {
       activate(injected);
     }
-  }, [])
+  }, [activate])
 
   useEffect(() => {
     if (IsConnected && error) {
@@ -96,7 +93,7 @@ const Menu = () => {
       }
       IsConnected = false;
     }
-  }, [account, error]);
+  }, [account, error, activate]);
 
   return (
     <section className="main-header">
@@ -105,7 +102,7 @@ const Menu = () => {
           <div className="row ">
             <div className="col-lg-12">
               <nav className="navbar navbar-expand-lg align-items-center">
-                <a className="navbar-brand" href="#">
+                <a className="navbar-brand" href="/">
                   <img src="/images/logo.svg" alt="" className="img-fluid" />
                 </a>
                 <button
