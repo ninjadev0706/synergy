@@ -119,11 +119,11 @@ const Roadmap = () => {
                                     <div className="item">
                                         <div className="d-flex gap-10">
                                             <div>&bull;</div>
-                                            <div>Users: 6,000,000+</div>
+                                            <div>Users: 90,000,000+</div>
                                         </div>
                                         <div className="d-flex gap-10">
                                             <div>&bull;</div>
-                                            <div>Sellers: 2,300+</div>
+                                            <div>Sellers: 700,000+</div>
                                         </div>
                                     </div>
                                 </td>
@@ -207,7 +207,7 @@ const Roadmap = () => {
                                     <div className="item">
                                         <div className="d-flex gap-10">
                                             <div>&bull;</div>
-                                            <div>+500 million revenues with net profit of $450 million+ (year 3 of operations)</div>
+                                            <div>+550 million revenues with net profit of $450 million+ (year 3 of operations)</div>
                                         </div>
                                     </div>
                                 </td>
@@ -215,7 +215,7 @@ const Roadmap = () => {
                                     <div className="item">
                                         <div className="d-flex gap-10">
                                             <div>&bull;</div>
-                                            <div>+500 million revenues with net profit of $450 million+ (year 3 of operations)</div>
+                                            <div>$14.7 billion revenues with net profit of $11.7 billion+ (year 5 of operations)</div>
                                         </div>
                                     </div>
                                 </td>
@@ -324,11 +324,11 @@ const Roadmap = () => {
                                         <div className="item-body">
                                             <div className="d-flex gap-10">
                                                 <div>&bull;</div>
-                                                <div>Users: 6,000,000+</div>
+                                                <div>Users: 90,000,000+</div>
                                             </div>
                                             <div className="d-flex gap-10">
                                                 <div>&bull;</div>
-                                                <div>Sellers: 2,300+</div>
+                                                <div>Sellers: 700,000+</div>
                                             </div>
                                         </div>
                                     </div>
@@ -441,7 +441,7 @@ const Roadmap = () => {
                                         <div className="item-body">
                                             <div className="d-flex gap-10">
                                                 <div>&bull;</div>
-                                                <div>+500 million revenues with net profit of $450 million+ (year 3 of operations)</div>
+                                                <div>+550 million revenues with net profit of $450 million+ (year 3 of operations)</div>
                                             </div>
                                         </div>
                                     </div>
@@ -452,7 +452,7 @@ const Roadmap = () => {
                                         <div className="item-body">
                                             <div className="d-flex gap-10">
                                                 <div>&bull;</div>
-                                                <div>+500 million revenues with net profit of $450 million+ (year 3 of operations)</div>
+                                                <div>$14.7 billion+ revenues with net profit of $11.7 billion+ (year 5 of operations)</div>
                                             </div>
                                         </div>
                                     </div>
