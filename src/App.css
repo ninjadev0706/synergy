@@ -431,6 +431,24 @@ a:hover {
   transition: all 0.3s ease;
 }
 
+.add-btn {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+
+.add-btn .wrapper {
+  width: fit-content;
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 28px;
+  padding: 11px 35px;
+  background: #1da1f3;
+  text-align: center;
+  text-transform: none;
+  cursor: pointer;
+}
+
 .main-btn:hover {
   background: none;
   color: #1da1f3;
@@ -1638,6 +1656,12 @@ map {
 }
 
 @media (max-width: 600px) {
+  .add-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
   .header-desc {
     color: white;
     margin: 15px 0 20px;

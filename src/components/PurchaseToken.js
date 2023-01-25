@@ -2,6 +2,30 @@ import BuyToken from "./BuyToken";
 
 const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
 
+  const addNetwork = async () => {
+    const { ethereum } = window;
+    try {
+      await ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: "0x1CC",
+            chainName: "Synergy.Surf.HTTPS",
+            nativeCurrency: {
+              name: "SYRF",
+              symbol: "SYRF",
+              decimals: 18,
+            },
+            rpcUrls: ["https://48384-57269.pph-server.de:80/"],
+            // blockExplorerUrls: [""],
+          },
+        ],
+      });
+    } catch (addError) {
+      console.error(addError);
+    }
+  }
+
   return (
     <section className="main-banner" id="home">
       <div className="banner-inner">
@@ -29,13 +53,17 @@ const PurchaseToken = ({ account, promiseData, buyWithBNB, buyWithTokens }) => {
                           The platform helps investors ensure a safe entry to our coin
                         </p>
                       </div>
-                      <div className="link">
-                        <a
+                      <div className="add-btn">
+                        {/* <a
                           href="/"
                           className="main-btn"
                         >
                           <span className="txt">Purchase tokens</span>
-                        </a>
+                        </a> */}
+                        <div className="d-flex gap-10 wrapper" onClick={addNetwork}>
+                          <div>Add SYRF Network</div>
+                          <div><img alt="" src="./images/metamask.svg" width="20px" /></div>
+                        </div>
                       </div>
                     </div>
                   </div>

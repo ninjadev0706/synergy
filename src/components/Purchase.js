@@ -196,11 +196,11 @@ const Purchase = ({ promiseData, buyWithBNB, isEnded, buyWithTokens }) => {
           <div className="progress-title">
             <div>
               <div className="desc">SOLD</div>
-              <div>{promiseData && promiseData.soldAmount ? promiseData.soldAmount.toLocaleString() : '0'}</div>
+              <div>{promiseData && promiseData.soldAmount ? promiseData.soldAmount.toFixed(0).toLocaleString() : '0'}</div>
             </div>
             <div>
               <div className="desc right">AVAILABLE</div>
-              <div>{promiseData["total_token"]?.toLocaleString()}</div>
+              <div>{(promiseData["total_token"]?.toFixed(0) - promiseData?.soldAmount?.toFixed(0))?.toLocaleString()}</div>
             </div>
           </div>
           <div className="mt-10">

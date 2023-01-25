@@ -43,10 +43,10 @@ const Footer = () => {
                 </div>
                 <div className="social-ico-wrap">
                   <div>
-                    <img src="/social/telegram.svg" alt="" width="40px" />
+                    <a href="https://twitter.com/Synergy_SURF" target="_blank" rel="noreferrer"><img src="/social/twitter.svg" alt="" width="40px" /></a>
                   </div>
                   <div>
-                    <a href="https://twitter.com/Synergy_SURF" target="_blank" rel="noreferrer"><img src="/social/twitter.svg" alt="" width="40px" /></a>
+                    <a href="https://t.me/Synergy_SURF" target="_blank" rel="noreferrer"><img src="/social/telegram.svg" alt="" width="40px" /></a>
                   </div>
                   <div>
                     <img src="/social/linkedin.svg" alt="" width="40px" />
@@ -95,7 +95,7 @@ const Footer = () => {
               <div className="top-bor"></div>
               <div className="d-flex justify-content-between align-items-center flex-wrap">
                 <div className="copy-text">
-                  Copyright 2021. All rights reserved
+                  Copyright 2023. All rights reserved
                 </div>
                 <div className="other-link">
                   <ul>

@@ -15,7 +15,7 @@ const AboutToken = () => {
                 Simply put, our coin exists to help investors earn big. Formally known as an Initial Coin Offering, an ICO involves the public sale of a coin to investors, with the opportunity to use said coins to enjoy a product or service – like online shopping.
               </p>
               <p>
-                With 20,000,000,000, tokens in total – 190,000,000 of which will be for sale in the ICO – we’re giving investors everywhere free rein to earn rewards, build a passive income stream, and turn their back on traditional investments as we know them.
+                With 92,233,720,368, tokens in total – 74,176,480 of which will be for sale in the ICO – we’re giving investors everywhere free rein to earn rewards, build a passive income stream, and turn their back on traditional investments as we know them.
               </p>
               <div className="link">
                 <a
